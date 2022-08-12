@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { visitInstance } from "../API/visit_api.js";
 
-export default function useGetScenery(pathUrl, params, city) {
-  const [scenery, setScenery] = useState([]);
+export default function useGetPlaceData(pathUrl, params, city) {
+  const [palce, setPalce] = useState([]);
   const {
     token: {
       tokenData: { data: { access_token, token_type } = {} },
@@ -25,12 +25,12 @@ export default function useGetScenery(pathUrl, params, city) {
         console.log(config);
         try {
           const { data } = await visitInstance(config);
-          setScenery(data);
+          setPalce(data);
         } catch (error) {
           console.error(error);
         }
       })();
     }
   }, [params, cityPath, pathUrl, access_token, token_type]);
-  return scenery;
+  return palce;
 }

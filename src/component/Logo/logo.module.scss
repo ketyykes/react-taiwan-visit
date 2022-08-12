@@ -1,0 +1,44 @@
+@use "../../styles/mixin";
+@use "../../styles/variable";
+.wrap_logo {
+  background-color: #fff;
+  a {
+    display: block;
+    height: 50px;
+    transform: scale(1);
+    transition: transform 0.5s;
+    img {
+      height: 100%;
+    }
+    &:hover {
+      transform: scale(1.1);
+    }
+    @include mixin.tablet {
+      display: inline-block;
+    }
+  }
+  .wrap_toggle {
+    display: none;
+  }
+  @include mixin.tablet {
+    position: relative;
+    text-align: center;
+    .wrap_toggle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      cursor: pointer;
+    }
+  }
+}
+@include mixin.tablet {
+  .sidebar_show {
+    transition: max-height 0.5s ease-in-out;
+    max-height: 100vh;
+    height: 100vh;
+  }
+}
+.destination_show {
+  max-height: 100vh;
+}

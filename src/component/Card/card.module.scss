@@ -1,0 +1,44 @@
+@use "../../styles/mixin";
+@use "../../styles/variable";
+.card {
+  box-shadow: variable.$box_shadow1;
+  border-radius: 16px;
+  width: calc((100% / 3) - 12px);
+  box-sizing: border-box;
+  p {
+    font-size: variable.$font_size3;
+    font-weight: 700;
+    padding: 0 20px;
+    margin-top: 10px;
+  }
+  @media (max-width: 1200px) {
+    width: calc(50% - 24px);
+  }
+  @media (max-width: 1030px) {
+    width: 100%;
+  }
+  @include mixin.tablet {
+    width: calc(50% - 24px);
+  }
+  @include mixin.mobile {
+    width: 100%;
+  }
+}
+.wrap_img {
+  overflow: hidden;
+  img {
+    height: 200px;
+    width: 100%;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+}
+.wrap_information {
+  padding: 8px 20px;
+}
+.wrap_location {
+  img {
+    vertical-align: middle;
+  }
+  line-height: 1.5;
+}

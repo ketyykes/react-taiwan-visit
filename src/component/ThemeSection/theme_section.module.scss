@@ -1,0 +1,11 @@
+@use "../../styles/mixin";
+
+.wrap_card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  @include mixin.tablet {
+    align-items: center;
+  }
+}

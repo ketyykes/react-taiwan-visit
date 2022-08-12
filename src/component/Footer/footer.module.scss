@@ -1,0 +1,22 @@
+@use "../../styles/variable";
+@use "../../styles/mixin";
+
+footer {
+  grid-area: footer;
+  background-color: variable.$primary_color1;
+  color: #fff;
+  line-height: 24px;
+  padding: 8px 0;
+  text-align: center;
+  outline: 1px solid blue;
+}
+.display_none {
+  @include mixin.tablet {
+    display: none;
+  }
+}
+.display_block {
+  @include mixin.tablet {
+    display: block;
+  }
+}

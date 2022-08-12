@@ -1,0 +1,15 @@
+@use "../../styles/variable";
+.wrap_visit_type_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  h3 {
+    font-size: variable.$font_size3;
+    font-weight: 700;
+  }
+  p {
+    color: variable.$primary_color1;
+  }
+}

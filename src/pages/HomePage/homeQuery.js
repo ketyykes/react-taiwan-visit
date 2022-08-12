@@ -39,7 +39,6 @@ const HOTEL_QUERY_PARAMS = { ...HOTEL_MORE_QUERY_PARAMS, $top: 3 };
 
 export const SCENICSPOT_QUERY = queryStringCreator(SCENICSPOT_QUERY_PARAMS);
 export const ACTIVITY_QUERY = queryStringCreator(ACTIVITY_QUERY_PARAMS);
-console.log(ACTIVITY_QUERY);
 export const RESTAURANT_QUERY = queryStringCreator(RESTAURANT_QUERY_PARAMS);
 export const HOTEL_QUERY = queryStringCreator(HOTEL_QUERY_PARAMS);
 export const SCENICSPOT_MORE_QUERY = queryStringCreator(

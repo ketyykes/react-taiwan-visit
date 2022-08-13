@@ -4,6 +4,7 @@ import useToggle from '../../hook/useToggle';
 import useGetPlaceData from '../../hook/useGetPlaceData';
 import { Logo, Sidebar, Banner, ThemeSection, Footer } from '../../component'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
+
 import {
     SCENICSPOT_QUERY
     , ACTIVITY_QUERY
@@ -17,24 +18,23 @@ import {
 const HomePage = () => {
     const {
         display_none, display_block,
-        container } = styles;
+        container, aside, header, article } = styles;
     const [menuValue, menuValueFunction] = useToggle(false);
     const placeDataScenicSpot = useGetPlaceData("ScenicSpot", SCENICSPOT_QUERY);
     const placeDataActivity = useGetPlaceData("Activity", ACTIVITY_QUERY);
     const placeDataRestaurant = useGetPlaceData("Restaurant", RESTAURANT_QUERY);
     const placeDataHotel = useGetPlaceData("Hotel", HOTEL_QUERY);
     const { ScenicSpot, Activity, Restaurant, Hotel } = ThemeCardContentByVisitType;
-
     return (
         <div className={container}>
-            <aside >
+            <aside className={aside}>
                 <Logo menuValueFunction={menuValueFunction} />
                 <Sidebar menuValue={menuValue} />
             </aside>
-            <header className={menuValue ? display_none : display_block}>
+            <header className={`${header} ${menuValue ? display_none : display_block}`}>
                 <Banner />
             </header>
-            <article className={menuValue ? display_none : display_block}>
+            <article className={`${article} ${menuValue ? display_none : display_block}`}>
                 <ThemeSection
                     title="熱門景點"
                     visitType="ScenicSpot"

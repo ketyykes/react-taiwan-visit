@@ -18,14 +18,12 @@
       "footer";
   }
 }
-
-header {
+.header {
   grid-area: banner;
   outline: 1px solid green;
   padding: 24px;
 }
-
-aside {
+.aside {
   grid-area: sidebar;
   position: sticky;
   top: 0;
@@ -48,29 +46,6 @@ aside {
   }
 }
 
-article {
+.article {
   padding: 24px;
-  .wrap_visit_type_title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    h3 {
-      font-size: variable.$font_size3;
-      font-weight: 700;
-    }
-    p {
-      color: variable.$primary_color1;
-    }
-  }
-  .wrap_card {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    @include mixin.tablet {
-      align-items: center;
-    }
-  }
 }

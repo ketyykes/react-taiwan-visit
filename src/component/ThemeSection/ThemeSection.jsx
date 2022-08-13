@@ -9,10 +9,10 @@ const ThemeSection = ({ visitType, placeData, title, CardContent, moreQuery }) =
             <ThemeTitle visitType={visitType} title={title} moreQuery={moreQuery} />
             <div className={wrap_card}>
                 {placeData.map(
-                    (palce, index) =>
+                    (place, index) =>
                     (
-                        <Card key={index} palceDatum={palce}>
-                            <CardContent palceDatum={palce} />
+                        <Card key={index} palceDatum={place}>
+                            <CardContent palceDatum={place} />
                         </Card>
                     )
                 )

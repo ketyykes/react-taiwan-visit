@@ -11,5 +11,8 @@
   }
   p {
     color: variable.$primary_color1;
+    a {
+      color: variable.$primary_color1;
+    }
   }
 }

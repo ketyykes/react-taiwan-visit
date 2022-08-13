@@ -7,7 +7,6 @@ const initialState = {
   status: null,
 };
 const url = `https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token`;
-
 const data = {
   client_id: "xi4869-9ec6640d-2382-4ea7",
   client_secret: "70b81579-a9ec-4477-ae50-a4b00b4476eb",

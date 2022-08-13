@@ -1,0 +1,61 @@
+@use "../../styles/mixin";
+@use "../../styles/variable";
+.container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar article"
+    "sidebar footer"
+    "sidebar ."
+    "sidebar .";
+  @include mixin.tablet {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar"
+      "header"
+      "article"
+      "footer";
+  }
+}
+.header {
+  grid-area: header;
+  outline: 1px solid green;
+  padding: 24px;
+  .title_type {
+    font-size: variable.$font_size2;
+    font-weight: 700;
+  }
+}
+.aside {
+  grid-area: sidebar;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  outline: 1px solid red;
+  padding: 24px;
+  @include mixin.tablet {
+    position: static;
+  }
+}
+.display_none {
+  @include mixin.tablet {
+    display: none;
+  }
+}
+.display_block {
+  @include mixin.tablet {
+    display: block;
+  }
+}
+.article {
+  padding: 24px;
+}
+.wrap_card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  @include mixin.tablet {
+    align-items: center;
+  }
+}

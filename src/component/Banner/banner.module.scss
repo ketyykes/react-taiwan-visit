@@ -10,8 +10,13 @@
   h1 {
     font-size: variable.$font_size1;
     white-space: nowrap;
+    margin-right: 24px;
     padding-left: 24px;
     font-weight: 700;
+    line-height: 1.5;
+    @media (max-width: 1030px) {
+      font-size: variable.$font_size2;
+    }
     @include mixin.tablet {
       font-size: variable.$font_size2;
     }

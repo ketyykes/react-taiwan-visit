@@ -14,7 +14,9 @@
   background-color: #fff;
   max-height: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  width: min-content;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 100px));
+  justify-content: center;
   overflow: hidden;
   position: absolute;
   top: 50px;

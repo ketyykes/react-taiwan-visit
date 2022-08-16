@@ -1,4 +1,4 @@
-@use "../../styles/mixin";
+@use "../../styles/breakpoint";
 @use "../../styles/variable";
 .wrap_banner {
   display: flex;
@@ -17,7 +17,7 @@
     @media (max-width: 1030px) {
       font-size: variable.$font_size2;
     }
-    @include mixin.tablet {
+    @include breakpoint.tablet {
       font-size: variable.$font_size2;
     }
   }

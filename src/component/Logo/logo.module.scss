@@ -1,4 +1,4 @@
-@use "../../styles/mixin";
+@use "../../styles/breakpoint";
 @use "../../styles/variable";
 .wrap_logo {
   background-color: #fff;
@@ -13,14 +13,14 @@
     &:hover {
       transform: scale(1.1);
     }
-    @include mixin.tablet {
+    @include breakpoint.tablet {
       display: inline-block;
     }
   }
   .wrap_toggle {
     display: none;
   }
-  @include mixin.tablet {
+  @include breakpoint.tablet {
     position: relative;
     text-align: center;
     .wrap_toggle {
@@ -32,7 +32,7 @@
     }
   }
 }
-@include mixin.tablet {
+@include breakpoint.tablet {
   .sidebar_show {
     transition: max-height 0.5s ease-in-out;
     max-height: 100vh;

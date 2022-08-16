@@ -1,5 +1,5 @@
 @use "../../styles/variable";
-@use "../../styles/mixin";
+@use "../../styles/breakpoint";
 
 footer {
   grid-area: footer;
@@ -11,12 +11,12 @@ footer {
   outline: 1px solid blue;
 }
 .display_none {
-  @include mixin.tablet {
+  @include breakpoint.tablet {
     display: none;
   }
 }
 .display_block {
-  @include mixin.tablet {
+  @include breakpoint.tablet {
     display: block;
   }
 }

@@ -1,0 +1,12 @@
+@use "./breakpoint";
+@mixin tablet_display_none {
+  @include breakpoint.tablet {
+    display: none;
+  }
+}
+
+@mixin tablet_display_block {
+  @include breakpoint.tablet {
+    display: block;
+  }
+}

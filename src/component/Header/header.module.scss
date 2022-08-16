@@ -1,0 +1,18 @@
+@use "../../styles/breakpoint";
+@use "../../styles/variable";
+.header {
+  grid-area: header;
+  outline: 1px solid green;
+  padding: 24px;
+}
+
+.display_none {
+  @include breakpoint.tablet {
+    display: none;
+  }
+}
+.display_block {
+  @include breakpoint.tablet {
+    display: block;
+  }
+}

@@ -1,0 +1,13 @@
+@use "../../styles/breakpoint";
+@use "../../styles/variable";
+.aside {
+  grid-area: sidebar;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  outline: 1px solid red;
+  padding: 24px;
+  @include breakpoint.tablet {
+    position: static;
+  }
+}

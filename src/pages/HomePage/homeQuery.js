@@ -15,20 +15,20 @@ export function queryStringCreator({ $select, $filter, $top }) {
 }
 
 const SCENICSPOT_MORE_QUERY_PARAMS = {
-  $select: "ScenicSpotName,Picture,OpenTime,Address",
+  $select: "ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
   $filter: "Picture/PictureUrl1 ne null",
 };
 
 const ACTIVITY_MORE_QUERY_PARAMS = {
-  $select: "EndTime,Address,StartTime,Picture,ActivityName",
+  $select: "EndTime,Address,StartTime,Picture,ActivityName,ActivityID",
   $filter: `date(EndTime)ge(${now})and Picture/PictureUrl1 ne null`,
 };
 const RESTAURANT_MORE_QUERY_PARAMS = {
-  $select: "Address,OpenTime,Picture,RestaurantName",
+  $select: "Address,OpenTime,Picture,RestaurantName,RestaurantID",
   $filter: "Picture/PictureUrl1 ne null",
 };
 const HOTEL_MORE_QUERY_PARAMS = {
-  $select: "Address,Phone,Picture,HotelName",
+  $select: "Address,Phone,Picture,HotelName,HotelID",
   $filter: "Picture/PictureUrl1 ne null",
 };
 

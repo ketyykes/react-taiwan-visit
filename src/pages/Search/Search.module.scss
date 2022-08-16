@@ -1,4 +1,4 @@
-@use "../../styles/mixin";
+@use "../../styles/breakpoint";
 @use "../../styles/variable";
 .container {
   display: grid;
@@ -9,7 +9,7 @@
     "sidebar footer"
     "sidebar ."
     "sidebar .";
-  @include mixin.tablet {
+  @include breakpoint.tablet {
     grid-template-columns: 1fr;
     grid-template-areas:
       "sidebar"
@@ -22,31 +22,10 @@
   grid-area: header;
   outline: 1px solid green;
   padding: 24px;
-  .title_type {
-    font-size: variable.$font_size2;
-    font-weight: 700;
-  }
 }
-.aside {
-  grid-area: sidebar;
-  position: sticky;
-  top: 0;
-  align-self: start;
-  outline: 1px solid red;
-  padding: 24px;
-  @include mixin.tablet {
-    position: static;
-  }
-}
-.display_none {
-  @include mixin.tablet {
-    display: none;
-  }
-}
-.display_block {
-  @include mixin.tablet {
-    display: block;
-  }
+.title_type {
+  font-size: variable.$font_size2;
+  font-weight: 700;
 }
 .article {
   padding: 24px;
@@ -55,7 +34,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  @include mixin.tablet {
+  @include breakpoint.tablet {
     align-items: center;
   }
 }

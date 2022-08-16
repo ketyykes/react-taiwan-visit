@@ -1,0 +1,12 @@
+@use "../../styles/breakpoint";
+@use "../../styles/variable";
+.wrap_pagination {
+  button {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    padding: 10px;
+    border: 2px solid variable.$primary_color1;
+    margin: 0 10px;
+  }
+}

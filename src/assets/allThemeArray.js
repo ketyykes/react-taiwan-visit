@@ -17,7 +17,7 @@ const allThemeArray = [
     image: history,
     visitType: "ScenicSpot",
     queryObject: {
-      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotId",
+      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
       $filter: `(Class3 eq '古蹟類' or Class2 eq '古蹟類'or Class1 eq '古蹟類' or Class3 eq '文化類' or Class2 eq '文化類'or Class1 eq '文化類' or Class3 eq '藝術類' or Class2 eq '藝術類'or Class1 eq '藝術類') and Picture/PictureUrl1 ne null and Address ne null`,
     },
   },
@@ -27,7 +27,7 @@ const allThemeArray = [
     image: outdoor,
     visitType: "ScenicSpot",
     queryObject: {
-      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotId",
+      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
       $filter: `(Class3 eq '生態類' or Class2 eq '生態類'or Class1 eq '生態類' or Class3 eq '林場類' or Class2 eq '林場類'or Class1 eq '林場類' or Class3 eq '休閒農業類' or Class2 eq '休閒農業類'or Class1 eq '休閒農業類') and Picture/PictureUrl1 ne null and Address ne null
         `,
     },
@@ -38,7 +38,7 @@ const allThemeArray = [
     image: religion,
     visitType: "ScenicSpot",
     queryObject: {
-      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotId",
+      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
       $filter: `(Class3 eq '廟宇類' or Class2 eq '廟宇類'or Class1 eq '廟宇類')and Picture/PictureUrl1 ne null and Address ne null`,
     },
   },
@@ -48,7 +48,7 @@ const allThemeArray = [
     image: parent_child,
     visitType: "Activity",
     queryObject: {
-      $select: `EndTime,Address,StartTime,Picture,ActivityName,ActivityId,Particpation`,
+      $select: `EndTime,Address,StartTime,Picture,ActivityName,Particpation,ActivityID`,
       $filter: `date(EndTime) ge ${now} and contains(Particpation,'國小') or contains(Particpation,'兒童') or contains(ActivityName,'親子')or contains(ActivityName , '兒童')`,
     },
   },
@@ -58,7 +58,7 @@ const allThemeArray = [
     image: scenery,
     visitType: "ScenicSpot",
     queryObject: {
-      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotId",
+      $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
       $filter: `(Class3 eq '自然風景類' or Class2 eq '自然風景類'or Class1 eq '自然風景類' or Class3 eq '都會公園類' or Class2 eq '都會公園類'or Class1 eq '都會公園類' or Class3 eq '國家風景區類' or Class2 eq '國家風景區類'or Class1 eq '國家風景區類') and Picture/PictureUrl1 ne null and Address ne null
         `,
     },
@@ -69,7 +69,7 @@ const allThemeArray = [
     image: food,
     visitType: "Restaurant",
     queryObject: {
-      $select: "RestaurantId,RestaurantName,Picture,OpenTime,Address",
+      $select: "RestaurantID,RestaurantName,Picture,OpenTime,Address",
       $filter: "Picture/PictureUrl1 ne null and Address ne null",
     },
   },
@@ -79,7 +79,7 @@ const allThemeArray = [
     image: accommodation,
     visitType: "Hotel",
     queryObject: {
-      $select: "Address,Phone,Picture,HotelName,HotelId",
+      $select: "Address,Phone,Picture,HotelName,HotelID",
       $filter: "Picture/PictureUrl1 ne null",
     },
   },
@@ -89,7 +89,7 @@ const allThemeArray = [
     image: sightseeing,
     visitType: "Activity",
     queryObject: {
-      $select: `EndTime,Address,StartTime,Picture,ActivityName,ActivityId`,
+      $select: `EndTime,Address,StartTime,Picture,ActivityName,ActivityID`,
       $filter: `date(EndTime) ge 2022-07-28 and Picture/PictureUrl1 ne null`,
     },
   },

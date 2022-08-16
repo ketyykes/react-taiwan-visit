@@ -2,49 +2,54 @@ import React from 'react'
 import { useParams, useSearchParams } from "react-router-dom";
 import styles from './search.module.scss';
 import useToggle from '../../hook/useToggle';
-import { Logo, Sidebar, Footer, Card } from '../../component'
+import { Footer, Card, Aside, Header, Pagination } from '../../component'
 import useGetPlaceData from '../../hook/useGetPlaceData';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
+import { changeAmountPage } from '../../store/searchSlice'
 
 
 const Search = () => {
     const {
         display_none, display_block,
-        container, aside, header, article, wrap_card, title_type } = styles;
+        container, article, wrap_card, title_type } = styles;
     const [menuValue, menuValueFunction] = useToggle(false);
     const [searchParams, setSearchParams] = useSearchParams();
-
     const params = useParams();
-    const { visitType, city } = params;
-    console.log(visitType);
-    console.log(searchParams.toString());
-    const data = useGetPlaceData(visitType, searchParams.toString(), city);
-    const renderData = data.filter((el, index) => (index < 20));
+    const { visitType, city, page } = params;
+    const distpatch = useDispatch();
+    const data = useGetPlaceData(visitType, searchParams.toString(), city, page);
+
+    distpatch(changeAmountPage(data));
+    const renderData = data.filter((_, index) => (index < 12));
+    console.log(renderData);
     const CardContent = ThemeCardContentByVisitType[visitType];
-    const { title } = useSelector(state => state.selectResult);
+    const { title, amountPage } = useSelector(state => state.selectResult);
+    console.log(amountPage);
     return (
         <div className={container}>
-            <aside className={aside}>
-                <Logo menuValueFunction={menuValueFunction} />
-                <Sidebar menuValue={menuValue} />
-            </aside>
-            <header className={`${header} ${menuValue ? display_none : display_block}`}>
+            <Aside
+                menuValue={menuValue}
+                menuValueFunction={menuValueFunction}
+            />
+            <Header >
                 <h2 className={title_type}>
                     {title}
                 </h2>
-            </header>
+            </Header>
             <article className={`${article} ${menuValue ? display_none : display_block}`}>
                 <div className={wrap_card}>
-                    {renderData.map(
-                        (place, index) =>
-                        (
-                            <Card key={index} palceDatum={place}>
-                                <CardContent palceDatum={place} />
-                            </Card>
+                    {
+                        renderData.map(
+                            (place, index) =>
+                            (
+                                <Card key={index} visitType={visitType} palceDatum={place}>
+                                    <CardContent palceDatum={place} />
+                                </Card>
+                            )
                         )
-                    )
                     }
+                    {/* <Pagination /> */}
                 </div>
             </article>
             <Footer menuValue={menuValue} />

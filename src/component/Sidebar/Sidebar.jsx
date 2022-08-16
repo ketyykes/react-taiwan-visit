@@ -65,7 +65,7 @@ const Sidebar = ({ menuValue }) => {
         }
         console.log(selectThemeValue);
         dispatch(changeTitle("搜尋結果"));
-        let url = `${selectThemeValue.visitType}${city}?${queryString}`;
+        let url = `${selectThemeValue.visitType}/1${city}?${queryString}`;
         navigate(`/search/${url}`);
     }
     return (

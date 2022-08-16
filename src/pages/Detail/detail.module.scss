@@ -1,5 +1,4 @@
 @use "../../styles/breakpoint";
-@use "../../styles/variable";
 .container {
   display: grid;
   grid-template-columns: 350px 1fr;
@@ -17,8 +16,4 @@
       "article"
       "footer";
   }
-}
-
-.article {
-  padding: 24px;
 }

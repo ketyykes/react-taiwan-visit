@@ -1,11 +1,11 @@
-@use "../../styles/mixin";
+@use "../../styles/breakpoint";
 
 .wrap_card {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px;
-  @include mixin.tablet {
+  @include breakpoint.tablet {
     align-items: center;
   }
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './homepage.module.scss';
 import useToggle from '../../hook/useToggle';
 import useGetPlaceData from '../../hook/useGetPlaceData';
-import { Logo, Sidebar, Banner, ThemeSection, Footer } from '../../component'
+import { Aside, Header, Banner, ThemeSection, Footer } from '../../component'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 
 import {
@@ -18,22 +18,24 @@ import {
 const HomePage = () => {
     const {
         display_none, display_block,
-        container, aside, header, article } = styles;
+        container, article } = styles;
     const [menuValue, menuValueFunction] = useToggle(false);
+
     const placeDataScenicSpot = useGetPlaceData("ScenicSpot", SCENICSPOT_QUERY);
     const placeDataActivity = useGetPlaceData("Activity", ACTIVITY_QUERY);
     const placeDataRestaurant = useGetPlaceData("Restaurant", RESTAURANT_QUERY);
     const placeDataHotel = useGetPlaceData("Hotel", HOTEL_QUERY);
+
     const { ScenicSpot, Activity, Restaurant, Hotel } = ThemeCardContentByVisitType;
     return (
         <div className={container}>
-            <aside className={aside}>
-                <Logo menuValueFunction={menuValueFunction} />
-                <Sidebar menuValue={menuValue} />
-            </aside>
-            <header className={`${header} ${menuValue ? display_none : display_block}`}>
+            <Aside
+                menuValue={menuValue}
+                menuValueFunction={menuValueFunction}
+            />
+            <Header menuValue={menuValue} >
                 <Banner />
-            </header>
+            </Header>
             <article className={`${article} ${menuValue ? display_none : display_block}`}>
                 <ThemeSection
                     title="熱門景點"
@@ -68,54 +70,5 @@ const HomePage = () => {
         </div >
     )
 }
-
-// function ThemeCard({ title, items, cardContent }) {
-//     return (
-//         <section>
-//             <Theme title={title} />
-//             <div className={wrap_card}>
-//                 {items.map((item, index) => <Card key={index} item={item} children={cardContent} />)}
-//             </div>
-//         </section>
-//     )
-// }
-
-{/* <Card key={index} item={item}  >{cardContent} <Card /> */ }
-
-{/* const ThemeCardContentByVisitType = {
-    Restaurant: item => (
-        <>
-            <img src={clock} alt="clock" />
-            <span>{item.OpenTime}</span>
-        </>
-    )
-} */}
-
-{/* function Foo() {
-    return (
-        <>
-            <ThemeCard
-                title="美食品嘗"
-                items={[]}
-                cardContent={ThemeCardContentByVisitType.Restaurant}
-            />
-
-
-            <ThemeCard />
-            <ThemeCard
-                title="住宿推薦"
-                items={[]}
-                cardContent={
-                    item => (
-                        <>
-                            <img src={calling} alt="clock" />
-                            <span>{item.Phone}</span>
-                        </>
-                    )
-                }
-            />
-        </>
-    )
-} */}
 
 export default HomePage

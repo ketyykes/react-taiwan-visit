@@ -2,13 +2,22 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { visitInstance } from "../API/visit_api.js";
 
-export default function useGetPlaceData(pathUrl, params, city) {
+function pageTurnToQueryString(page) {
+  const pageQueryOjbect = {
+    $top: page * 12,
+  };
+  return `&${new URLSearchParams(pageQueryOjbect).toString()}`;
+}
+export default function useGetPlaceData(pathUrl, params, city, page = "1") {
   const [palce, setPalce] = useState([]);
   const {
     token: {
       tokenData: { data: { access_token, token_type } = {} },
     },
   } = useSelector((state) => state);
+  if (page !== "1") {
+    params += pageTurnToQueryString(page);
+  }
   params += "&$format=JSON";
   const cityPath = city ? "/" + city : "";
   useEffect(() => {

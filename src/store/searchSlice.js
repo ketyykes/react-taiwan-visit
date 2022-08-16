@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   title: "",
   city: "",
+  amountPage: 1,
 };
 
 export const selectResultSlice = createSlice({
@@ -14,8 +15,12 @@ export const selectResultSlice = createSlice({
     changeCity: (state, action) => {
       state.city = action.payload;
     },
+    changeAmountPage: (state, action) => {
+      state.amountPage = Math.ceil(action.payload.length / 10);
+    },
   },
 });
 
-export const { changeTitle, changeCity } = selectResultSlice.actions;
+export const { changeTitle, changeCity, changeAmountPage } =
+  selectResultSlice.actions;
 export default selectResultSlice.reducer;

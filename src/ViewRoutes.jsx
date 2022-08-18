@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Search from "./pages/Search/Search";
 import Detail from "./pages/Detail/Detail";
-import MapTest from "./pages/Detail/MapTest";
+import MapTest from "./pages/MapTest/MapTest";
 
 import allCityArray from "./assets/allCityArray";
 

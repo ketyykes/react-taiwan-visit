@@ -1,4 +1,5 @@
 @use "../../styles/breakpoint";
+@use "../../styles/variable";
 .container {
   display: grid;
   grid-template-columns: 350px 1fr;
@@ -16,4 +17,53 @@
       "article"
       "footer";
   }
+}
+
+.article {
+  padding: 24px;
+}
+
+.visit_img {
+  display: block;
+  width: 100%;
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+.wrap_information {
+  background-color: variable.$primary_color2;
+  margin-bottom: 24px;
+  img {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  & > div {
+    line-height: 2;
+  }
+}
+
+.wrap_introduction {
+  margin-bottom: 24px;
+  h3 {
+    color: variable.$primary_color1;
+    font-size: variable.$font_title;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  p {
+    word-break: break-all;
+    line-height: 1.5;
+    font-size: variable.$font_desktop_body1;
+  }
+}
+.wrap_transportation {
+  h3 {
+    color: variable.$primary_color1;
+    font-size: variable.$font_title;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  p {
+    line-height: 1.5;
+  }
+  margin-bottom: 48px;
 }

@@ -4,9 +4,9 @@ import styles from './search.module.scss';
 import useToggle from '../../hook/useToggle';
 import { Footer, Card, Aside, Header, Pagination } from '../../component'
 import useGetPlaceData from '../../hook/useGetPlaceData';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
-import { changeAmountPage } from '../../store/searchSlice'
+
 
 
 const Search = () => {
@@ -16,16 +16,11 @@ const Search = () => {
     const [menuValue, menuValueFunction] = useToggle(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const params = useParams();
-    const { visitType, city, page } = params;
-    const distpatch = useDispatch();
-    const data = useGetPlaceData(visitType, searchParams.toString(), city, page);
-
-    distpatch(changeAmountPage(data));
+    const { visitType, city } = params;
+    const data = useGetPlaceData(visitType, searchParams.toString(), city);
     const renderData = data.filter((_, index) => (index < 12));
-    console.log(renderData);
     const CardContent = ThemeCardContentByVisitType[visitType];
-    const { title, amountPage } = useSelector(state => state.selectResult);
-    console.log(amountPage);
+    const { title } = useSelector(state => state.selectResult);
     return (
         <div className={container}>
             <Aside

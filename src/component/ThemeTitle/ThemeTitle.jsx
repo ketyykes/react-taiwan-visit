@@ -15,7 +15,7 @@ const ThemeTitle = ({ visitType, title, moreQuery }) => {
                 <img src={location_purple} alt="location" />
                 {title}</h3>
             <p>
-                <Link onClick={() => (distpath(changeTitle(title)))} to={`/search/${visitType}/1/?${moreQuery}`}>
+                <Link onClick={() => (distpath(changeTitle(title)))} to={`/search/${visitType}?${moreQuery}`}>
                     更多{title}
                 </Link>
             </p>

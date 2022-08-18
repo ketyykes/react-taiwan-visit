@@ -6,7 +6,7 @@
   width: calc((100% / 3) - 12px);
   box-sizing: border-box;
   cursor: pointer;
-  p {
+  > p {
     font-size: variable.$font_size3;
     font-weight: 700;
     padding: 0 20px;

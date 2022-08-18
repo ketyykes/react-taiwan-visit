@@ -5,10 +5,9 @@ import clock from "../../assets/images/clock.png";
 import calling from "../../assets/images/calling.png";
 const { wrap_information, wrap_location } = styles;
 const ThemeCardContentByVisitType = {
-  ScenicSpot: ({ palceDatum: { ScenicSpotName, Address, OpenTime } }) => {
+  ScenicSpot: ({ palceDatum: { Address, OpenTime } = {} }) => {
     return (
       <>
-        <p>{ScenicSpotName}</p>
         <div className={wrap_information}>
           <div>
             <div className={wrap_location}>
@@ -24,9 +23,8 @@ const ThemeCardContentByVisitType = {
       </>
     );
   },
-  Restaurant: ({ palceDatum: { ActivityName, Address, OpenTime } }) => (
+  Restaurant: ({ palceDatum: { Address, OpenTime } = {} }) => (
     <>
-      <p>{ActivityName}</p>
       <div className={wrap_information}>
         <div>
           <div className={wrap_location}>
@@ -35,15 +33,18 @@ const ThemeCardContentByVisitType = {
           </div>
           <div>
             <img src={clock} alt="clock" />
-            {OpenTime}
+            {(() => {
+              const createTempleteDiv = document.createElement("div");
+              createTempleteDiv.innerHTML = OpenTime;
+              return createTempleteDiv.textContent;
+            })()}
           </div>
         </div>
       </div>
     </>
   ),
-  Hotel: ({ palceDatum: { HotelName, Address, Phone } }) => (
+  Hotel: ({ palceDatum: { Address, Phone } = {} }) => (
     <>
-      <p>{HotelName}</p>
       <div className={wrap_information}>
         <div>
           <div className={wrap_location}>
@@ -58,9 +59,8 @@ const ThemeCardContentByVisitType = {
       </div>
     </>
   ),
-  Activity: ({ palceDatum: { ActivityName, Address, StartTime, EndTime } }) => (
+  Activity: ({ palceDatum: { Address, StartTime, EndTime } = {} }) => (
     <>
-      <p>{ActivityName}</p>
       <div className={wrap_information}>
         <div>
           <div className={wrap_location}>

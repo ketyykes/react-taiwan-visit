@@ -1,12 +1,11 @@
-import React from 'react'
-import { useParams, useSearchParams } from "react-router-dom";
+import React, { useState } from 'react'
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import styles from './search.module.scss';
 import useToggle from '../../hook/useToggle';
 import { Footer, Card, Aside, Header, Pagination } from '../../component'
 import useGetPlaceData from '../../hook/useGetPlaceData';
 import { useSelector } from "react-redux";
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
-
 
 
 const Search = () => {
@@ -16,8 +15,15 @@ const Search = () => {
     const [menuValue, menuValueFunction] = useToggle(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const params = useParams();
-    const { visitType, city } = params;
+
+    const navigate = useNavigate();
+    const { visitType, city, page } = params;
+
+    console.log(params);
+    console.log(searchParams.toString());
+
     const data = useGetPlaceData(visitType, searchParams.toString(), city);
+
     const renderData = data.filter((_, index) => (index < 12));
     const CardContent = ThemeCardContentByVisitType[visitType];
     const { title } = useSelector(state => state.selectResult);
@@ -38,13 +44,13 @@ const Search = () => {
                         renderData.map(
                             (place, index) =>
                             (
-                                <Card key={index} visitType={visitType} palceDatum={place}>
-                                    <CardContent palceDatum={place} />
+                                <Card key={index} visitType={visitType} placeDatum={place}>
+                                    <CardContent placeDatum={place} />
                                 </Card>
                             )
                         )
                     }
-                    {/* <Pagination /> */}
+                    <Pagination itemAmount={data.length} visitType={visitType} />
                 </div>
             </article>
             <Footer menuValue={menuValue} />

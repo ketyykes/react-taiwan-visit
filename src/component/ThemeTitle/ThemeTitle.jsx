@@ -7,15 +7,13 @@ import { changeTitle } from '../../store/searchSlice'
 const ThemeTitle = ({ visitType, title, moreQuery }) => {
     const { wrap_visit_type_title } = styles;
     const distpath = useDispatch();
-    // console.log(moreQuery);
-    // console.log(visitType);
     return (
         <div className={wrap_visit_type_title}>
             <h3>
                 <img src={location_purple} alt="location" />
                 {title}</h3>
             <p>
-                <Link onClick={() => (distpath(changeTitle(title)))} to={`/search/${visitType}?${moreQuery}`}>
+                <Link onClick={() => (distpath(changeTitle(title)))} to={`/search/${visitType}/1?${moreQuery}`}>
                     更多{title}
                 </Link>
             </p>

@@ -11,8 +11,8 @@ const ThemeSection = ({ visitType, placeData, title, CardContent, moreQuery }) =
                 {placeData.map(
                     (place, index) =>
                     (
-                        <Card visitType={visitType} key={index} palceDatum={place}>
-                            <CardContent palceDatum={place} />
+                        <Card visitType={visitType} key={index} placeDatum={place}>
+                            <CardContent placeDatum={place} />
                         </Card>
                     )
                 )

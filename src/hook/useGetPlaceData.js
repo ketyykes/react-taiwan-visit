@@ -9,7 +9,7 @@ function pageTurnToQueryString(page) {
   return `&${new URLSearchParams(pageQueryOjbect).toString()}`;
 }
 export default function useGetPlaceData(pathUrl, params, city) {
-  const [palce, setPalce] = useState([]);
+  const [place, setPlace] = useState([]);
   const {
     token: {
       tokenData: { data: { access_token, token_type } = {} },
@@ -31,7 +31,7 @@ export default function useGetPlaceData(pathUrl, params, city) {
         console.log(config);
         try {
           const { data } = await visitInstance(config);
-          setPalce(data);
+          setPlace(data);
         } catch (error) {
           return null;
           // return {};
@@ -39,5 +39,5 @@ export default function useGetPlaceData(pathUrl, params, city) {
       })();
     }
   }, [params, cityPath, pathUrl, access_token, token_type]);
-  return palce;
+  return place;
 }

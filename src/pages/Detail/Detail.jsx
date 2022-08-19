@@ -3,10 +3,15 @@ import styles from './detail.module.scss'
 import useGetPlaceData from '../../hook/useGetPlaceData';
 import useToggle from '../../hook/useToggle';
 import { Aside, Header, Footer } from '../../component'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
 import { useParams, useSearchParams } from "react-router-dom";
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 
+function ChangeView({ center, zoom }) {
+    const map = useMap();
+    map.setView(center, zoom);
+    return null;
+}
 
 const Detail = () => {
     const { container
@@ -20,16 +25,17 @@ const Detail = () => {
     const [menuValue, menuValueFunction] = useToggle(false);
     const { visitType } = useParams();
     const data = useGetPlaceData(visitType, searchParams);
+
     console.log(data?.[0]);
 
     const { Picture: { PictureUrl1 } = {},
-        Position: { PositionLat = 0, PositionLon = 0 } = {},
+        Position: { PositionLat = 23.5, PositionLon = 121 } = {},
         Description, DescriptionDetail,
         TravelInfo, [`${visitType}Name`]: visitName } = data?.[0] || {};
 
     const CardContent = ThemeCardContentByVisitType[visitType];
-
-    const component = <CardContent palceDatum={data?.[0]} />
+    console.log(PositionLat);
+    const component = <CardContent placeDatum={data?.[0]} />
     return (
         <div className={container}>
             <Aside
@@ -54,15 +60,13 @@ const Detail = () => {
                     <div className={wrap_transportation}>
                         <h3>交通方式</h3>
                         <div className={wrap_map} style={{ height: "100%", width: "100%" }} >
-                            <MapContainer center={[22.9886837, 120.2154008]} zoom={17} scrollWheelZoom={true}>
+                            <MapContainer scrollWheelZoom={true}>
+                                <ChangeView center={[PositionLat, PositionLon]} zoom={13} />
                                 <TileLayer
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                 />
-                                <Marker position={[22.9886837, 120.2154008]}>
-                                    <Popup>
-                                        A pretty CSS3 popup. <br /> Easily customizable.
-                                    </Popup>
+                                <Marker position={[PositionLat, PositionLon]}>
                                 </Marker>
                             </MapContainer>
                         </div>

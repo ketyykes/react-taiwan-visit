@@ -2,14 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './card.module.scss';
 import banner from '../../assets/images/banner.png';
-const Card = ({ palceDatum, visitType, children }) => {
+const Card = ({ placeDatum, visitType, children }) => {
     const { card, wrap_img } = styles;
     const navigate = useNavigate();
     const handleError = (e) => {
         e.currentTarget.src = banner;
     }
     const clickCardHandle = () => {
-        const id = palceDatum[`${visitType}ID`]
+        const id = placeDatum[`${visitType}ID`]
         let url = `${visitType}?$filter=${visitType}ID eq '${id}'`;
         navigate(`/detail/${url}`);
     }
@@ -18,9 +18,9 @@ const Card = ({ palceDatum, visitType, children }) => {
     return (
         <div className={card} onClick={clickCardHandle}>
             <div className={wrap_img}>
-                <img src={palceDatum.Picture.PictureUrl1} onError={(error) => handleError(error)} alt="" />
+                <img src={placeDatum.Picture.PictureUrl1} onError={(error) => handleError(error)} alt="" />
             </div>
-            <p>{palceDatum[`${visitType}Name`]}</p>
+            <p>{placeDatum[`${visitType}Name`]}</p>
             {children}
         </div>
     )

@@ -5,7 +5,7 @@ import clock from "../../assets/images/clock.png";
 import calling from "../../assets/images/calling.png";
 const { wrap_information, wrap_location } = styles;
 const ThemeCardContentByVisitType = {
-  ScenicSpot: ({ palceDatum: { Address, OpenTime } = {} }) => {
+  ScenicSpot: ({ placeDatum: { Address, OpenTime } = {} }) => {
     return (
       <>
         <div className={wrap_information}>
@@ -23,7 +23,7 @@ const ThemeCardContentByVisitType = {
       </>
     );
   },
-  Restaurant: ({ palceDatum: { Address, OpenTime } = {} }) => (
+  Restaurant: ({ placeDatum: { Address, OpenTime } = {} }) => (
     <>
       <div className={wrap_information}>
         <div>
@@ -43,7 +43,7 @@ const ThemeCardContentByVisitType = {
       </div>
     </>
   ),
-  Hotel: ({ palceDatum: { Address, Phone } = {} }) => (
+  Hotel: ({ placeDatum: { Address, Phone } = {} }) => (
     <>
       <div className={wrap_information}>
         <div>
@@ -59,7 +59,7 @@ const ThemeCardContentByVisitType = {
       </div>
     </>
   ),
-  Activity: ({ palceDatum: { Address, StartTime, EndTime } = {} }) => (
+  Activity: ({ placeDatum: { Address, StartTime, EndTime } = {} }) => (
     <>
       <div className={wrap_information}>
         <div>

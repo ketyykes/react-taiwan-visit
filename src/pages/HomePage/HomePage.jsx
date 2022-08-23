@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './homepage.module.scss';
 import useToggle from '../../hook/useToggle';
 import useGetPlaceData from '../../hook/useGetPlaceData';
-import { Outlet } from "react-router-dom";
 import { Aside, Header, Banner, ThemeSection, Footer } from '../../component'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 
@@ -15,7 +14,7 @@ import {
     , ACTIVITY_MORE_QUERY
     , RESTAURANT_MORE_QUERY
     , HOTEL_MORE_QUERY
-} from './homeQuery.js';
+} from '../../assets/visitTypeQuery.js';
 const HomePage = () => {
     const {
         display_none, display_block,

@@ -2,13 +2,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { visitInstance } from "../API/visit_api.js";
 
-function pageTurnToQueryString(page) {
-  const pageQueryOjbect = {
-    $top: page * 12,
-  };
-  return `&${new URLSearchParams(pageQueryOjbect).toString()}`;
-}
-export default function useGetPlaceData(pathUrl, params, city) {
+export default function useGetPlaceData(pathUrl, params, city = "all") {
   const [place, setPlace] = useState([]);
   const {
     token: {
@@ -16,7 +10,7 @@ export default function useGetPlaceData(pathUrl, params, city) {
     },
   } = useSelector((state) => state);
   params += "&$format=JSON";
-  const cityPath = city ? "/" + city : "";
+  const cityPath = city === "all" ? "" : "/" + city;
   useEffect(() => {
     if (access_token) {
       (async () => {
@@ -24,7 +18,6 @@ export default function useGetPlaceData(pathUrl, params, city) {
           method: "GET",
           url: `/Tourism/${pathUrl + cityPath}?${params}`,
           headers: {
-            // Accept: "application/json",
             Authorization: `${token_type} ${access_token}`,
           },
         };
@@ -33,8 +26,8 @@ export default function useGetPlaceData(pathUrl, params, city) {
           const { data } = await visitInstance(config);
           setPlace(data);
         } catch (error) {
+          console.log(error);
           return null;
-          // return {};
         }
       })();
     }

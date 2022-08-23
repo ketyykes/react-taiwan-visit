@@ -2,10 +2,12 @@ import React from 'react'
 import styles from './detail.module.scss'
 import useGetPlaceData from '../../hook/useGetPlaceData';
 import useToggle from '../../hook/useToggle';
-import { Aside, Header, Footer } from '../../component'
+import { Aside, Header, Footer, Card } from '../../component'
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
 import { useParams, useSearchParams } from "react-router-dom";
+import useRandomPlaceQuery from '../../hook/useRandomPlaceQuery';
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
+
 
 function ChangeView({ center, zoom }) {
     const map = useMap();
@@ -24,18 +26,16 @@ const Detail = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const [menuValue, menuValueFunction] = useToggle(false);
     const { visitType } = useParams();
-    const data = useGetPlaceData(visitType, searchParams);
+    const detailData = useGetPlaceData(visitType, searchParams);
+    const randomPlace = useRandomPlaceQuery(visitType);
 
-    console.log(data?.[0]);
 
     const { Picture: { PictureUrl1 } = {},
         Position: { PositionLat = 23.5, PositionLon = 121 } = {},
         Description, DescriptionDetail,
-        TravelInfo, [`${visitType}Name`]: visitName } = data?.[0] || {};
-
+        TravelInfo, [`${visitType}Name`]: visitName } = detailData?.[0] || {};
     const CardContent = ThemeCardContentByVisitType[visitType];
-    console.log(PositionLat);
-    const component = <CardContent placeDatum={data?.[0]} />
+    const Information = ThemeCardContentByVisitType[visitType];
     return (
         <div className={container}>
             <Aside
@@ -49,9 +49,9 @@ const Detail = () => {
             </Header>
             <article className={`${article} ${menuValue ? display_none : display_block}`}>
                 <div className={wrap_content}>
-                    <img className={visit_img} src={PictureUrl1} alt="" />
+                    <img className={visit_img} src={PictureUrl1} alt={visitName} />
                     <div className={wrap_information}>
-                        {component}
+                        <Information placeDatum={detailData?.[0]} />
                     </div>
                     <div className={wrap_introduction}>
                         <h3>景點介紹</h3>
@@ -76,6 +76,18 @@ const Detail = () => {
                     </div>
                     <div className={wrap_more_visitplace}>
                         <h3>更多景點</h3>
+                    </div>
+                    <div>
+                        {
+                            randomPlace.map(
+                                (place, index) =>
+                                (
+                                    <Card key={index} visitType={visitType} placeDatum={place}>
+                                        <CardContent placeDatum={place} />
+                                    </Card>
+                                )
+                            )
+                        }
                     </div>
                 </div>
             </article>

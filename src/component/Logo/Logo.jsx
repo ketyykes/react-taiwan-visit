@@ -6,7 +6,7 @@ import styles from './logo.module.scss';
 const Logo = ({ menuValueFunction }) => {
     const { wrap_logo, wrap_toggle } = styles;
     return (
-        <>  <div className={wrap_logo}>
+        <div className={wrap_logo}>
             <a href="/">
                 <img src={logo} alt="logo" />
             </a>
@@ -14,7 +14,6 @@ const Logo = ({ menuValueFunction }) => {
                 <img src={toggle} alt="toggle" />
             </button>
         </div>
-        </>
     )
 }
 

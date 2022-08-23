@@ -1,12 +1,53 @@
 @use "../../styles/breakpoint";
 @use "../../styles/variable";
 .wrap_pagination {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   button {
+    display: block;
     height: 40px;
     width: 40px;
     border-radius: 8px;
-    padding: 10px;
     border: 2px solid variable.$primary_color1;
-    margin: 0 10px;
+    background-color: #fff;
+    color: variable.$primary_color1;
+    cursor: pointer;
+    &:hover {
+      background-color: variable.$primary_color1;
+      color: #fff;
+    }
+    &:active {
+      background-color: variable.$primary_color1;
+      color: #fff;
+      opacity: 0.8;
+    }
+  }
+  @media (max-width: 1030px) {
+    gap: 6px;
+    button {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  @include breakpoint.tablet {
+    display: none;
+  }
+
+  .current_page_button {
+    background-color: variable.$primary_color1;
+    color: #fff;
+  }
+  .common_page_button {
+    background-color: #fff;
+    color: variable.$primary_color1;
+  }
+  .visibility_visible {
+    visibility: visible;
+  }
+  .visibility_hidden {
+    visibility: hidden;
   }
 }

@@ -17,6 +17,6 @@ export const selectResultSlice = createSlice({
   },
 });
 
-export const { changeTitle, changeCity, changeAmountPage } =
+export const { changeTitle, changeCity, changeIdType } =
   selectResultSlice.actions;
 export default selectResultSlice.reducer;

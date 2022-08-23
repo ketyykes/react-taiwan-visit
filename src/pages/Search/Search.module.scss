@@ -29,12 +29,16 @@
 }
 .article {
   padding: 24px;
+  grid-area: article;
 }
 .wrap_card {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  @include breakpoint.tablet {
-    align-items: center;
-  }
+}
+.display_none {
+  display: none;
+}
+.display_block {
+  display: block;
 }

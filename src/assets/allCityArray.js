@@ -1,5 +1,5 @@
 const allCityArray = [
-  { chineseName: "全部", urlPathName: "" },
+  { chineseName: "全部", urlPathName: "all" },
   { chineseName: "台北", urlPathName: "Taipei" },
   { chineseName: "新北", urlPathName: "NewTaipei" },
   { chineseName: "桃園", urlPathName: "Taoyuan" },

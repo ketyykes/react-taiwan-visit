@@ -18,7 +18,7 @@ const allThemeArray = [
     visitType: "ScenicSpot",
     queryObject: {
       $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
-      $filter: `(Class3 eq '古蹟類' or Class2 eq '古蹟類'or Class1 eq '古蹟類' or Class3 eq '文化類' or Class2 eq '文化類'or Class1 eq '文化類' or Class3 eq '藝術類' or Class2 eq '藝術類'or Class1 eq '藝術類') and Picture/PictureUrl1 ne null and Address ne null and Description ne null`,
+      $filter: `(Class3 eq '古蹟類' or Class2 eq '古蹟類'or Class1 eq '古蹟類' or Class3 eq '文化類' or Class2 eq '文化類'or Class1 eq '文化類' or Class3 eq '藝術類' or Class2 eq '藝術類'or Class1 eq '藝術類') and Picture/PictureUrl1 ne null and Address ne null and Description ne null and OpenTime ne null`,
     },
   },
   {
@@ -28,7 +28,7 @@ const allThemeArray = [
     visitType: "ScenicSpot",
     queryObject: {
       $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
-      $filter: `(Class3 eq '生態類' or Class2 eq '生態類'or Class1 eq '生態類' or Class3 eq '林場類' or Class2 eq '林場類'or Class1 eq '林場類' or Class3 eq '休閒農業類' or Class2 eq '休閒農業類'or Class1 eq '休閒農業類') and Picture/PictureUrl1 ne null and Address ne null and Description ne null`,
+      $filter: `(Class3 eq '生態類' or Class2 eq '生態類'or Class1 eq '生態類' or Class3 eq '林場類' or Class2 eq '林場類'or Class1 eq '林場類' or Class3 eq '休閒農業類' or Class2 eq '休閒農業類'or Class1 eq '休閒農業類') and Picture/PictureUrl1 ne null and Address ne null and Description ne null and OpenTime ne null`,
     },
   },
   {
@@ -38,7 +38,7 @@ const allThemeArray = [
     visitType: "ScenicSpot",
     queryObject: {
       $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
-      $filter: `(Class3 eq '廟宇類' or Class2 eq '廟宇類'or Class1 eq '廟宇類')and Picture/PictureUrl1 ne null and Address ne null and Description ne null`,
+      $filter: `(Class3 eq '廟宇類' or Class2 eq '廟宇類'or Class1 eq '廟宇類')and Picture/PictureUrl1 ne null and Address ne null and Description ne null and OpenTime ne null`,
     },
   },
   {
@@ -58,7 +58,7 @@ const allThemeArray = [
     visitType: "ScenicSpot",
     queryObject: {
       $select: "Class1,ScenicSpotName,Picture,OpenTime,Address,ScenicSpotID",
-      $filter: `(Class3 eq '自然風景類' or Class2 eq '自然風景類'or Class1 eq '自然風景類' or Class3 eq '都會公園類' or Class2 eq '都會公園類'or Class1 eq '都會公園類' or Class3 eq '國家風景區類' or Class2 eq '國家風景區類'or Class1 eq '國家風景區類') and Picture/PictureUrl1 ne null and Address ne null and Description ne null`,
+      $filter: `(Class3 eq '自然風景類' or Class2 eq '自然風景類'or Class1 eq '自然風景類' or Class3 eq '都會公園類' or Class2 eq '都會公園類'or Class1 eq '都會公園類' or Class3 eq '國家風景區類' or Class2 eq '國家風景區類'or Class1 eq '國家風景區類') and Picture/PictureUrl1 ne null and Address ne null and Description ne null and OpenTime ne null`,
     },
   },
   {

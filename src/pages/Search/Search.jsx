@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useParams, useSearchParams, useNavigate } from "react-router-dom";
+import React from 'react'
+import { useParams, useSearchParams } from "react-router-dom";
 import styles from './search.module.scss';
 import useToggle from '../../hook/useToggle';
 import { Footer, Card, Aside, Header, Pagination } from '../../component'
@@ -15,16 +15,13 @@ const Search = () => {
     const [menuValue, menuValueFunction] = useToggle(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const params = useParams();
-
-    const navigate = useNavigate();
-    const { visitType, city, page } = params;
-
     console.log(params);
-    console.log(searchParams.toString());
-
+    const { visitType, city, page } = params;
     const data = useGetPlaceData(visitType, searchParams.toString(), city);
+    console.log(data);
 
-    const renderData = data.filter((_, index) => (index < 12));
+    const renderData = data.slice((page - 1) * 12, page * 12);
+
     const CardContent = ThemeCardContentByVisitType[visitType];
     const { title } = useSelector(state => state.selectResult);
     return (
@@ -50,8 +47,8 @@ const Search = () => {
                             )
                         )
                     }
-                    <Pagination itemAmount={data.length} visitType={visitType} />
                 </div>
+                <Pagination currentPage={+page} itemAmount={data.length} visitType={visitType} />
             </article>
             <Footer menuValue={menuValue} />
         </div >

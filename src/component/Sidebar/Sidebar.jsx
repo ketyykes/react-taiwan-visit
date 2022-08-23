@@ -38,7 +38,7 @@ const Sidebar = ({ menuValue }) => {
     };
     const initialSelectCityValue = {
         chineseName: "目的地"
-        , urlPathName: ""
+        , urlPathName: "all"
     };
     const [distnationValue, distnationFunction] = useToggle(false);
     const [selectThemeValue, setSelectThemeValue] = useState(initialSelectThemeValue);
@@ -65,7 +65,8 @@ const Sidebar = ({ menuValue }) => {
         }
         console.log(selectThemeValue);
         dispatch(changeTitle("搜尋結果"));
-        let url = `${selectThemeValue.visitType}${city}?${queryString}`;
+        let url = `${selectThemeValue.visitType}${city}/1/?${queryString}`;
+        console.log(url);
         navigate(`/search/${url}`);
     }
     return (

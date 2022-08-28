@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './aside.module.scss';
-import Logo from '../Logo/Logo';
-import Sidebar from '../Sidebar/Sidebar'
+import { Logo, Sidebar } from '../index.js'
 const Aside = ({ menuValueFunction, menuValue }) => {
     const { aside } = styles;
     return (

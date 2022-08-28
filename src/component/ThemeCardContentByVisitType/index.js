@@ -1,8 +1,6 @@
 import styles from "./ThemeCardContent.module.scss";
 import dayjs from "dayjs";
-import location_green from "../../assets/images/location_green.png";
-import clock from "../../assets/images/clock.png";
-import calling from "../../assets/images/calling.png";
+import { location_green, clock, calling } from "../../assets/images";
 const { wrap_information, wrap_location } = styles;
 const ThemeCardContentByVisitType = {
   ScenicSpot: ({ placeDatum: { Address, OpenTime } = {} }) => {

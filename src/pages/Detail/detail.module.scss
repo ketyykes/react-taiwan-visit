@@ -41,6 +41,8 @@
   }
 }
 .wrap_map {
+  height: 100%;
+  width: 100%;
 }
 .wrap_introduction {
   margin-bottom: 24px;
@@ -67,4 +69,17 @@
     line-height: 1.5;
   }
   margin-bottom: 48px;
+}
+.wrap_more_visitplace {
+  h3 {
+    color: variable.$primary_color1;
+    font-size: variable.$font_title;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+}
+.wrap_card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { changeCity, changeTitle } from '../../store/searchSlice'
+import { useNavigate } from 'react-router-dom';
 import styles from './sidebar.module.scss';
-import magnifying from '../../assets/images/magnifying.png'
-import drop_down from '../../assets/images/drop_down.png'
+import { magnifying, drop_down } from '../../assets/images'
 import allCityArray from '../../assets/allCityArray';
 import allThemeArray from '../../assets/allThemeArray';
 import useToggle from '../../hook/useToggle.js';
-import { changeCity, changeTitle } from '../../store/searchSlice'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ menuValue }) => {
     const {
@@ -23,6 +22,9 @@ const Sidebar = ({ menuValue }) => {
         select_theme,
         destination_show,
         select_city,
+        start_search,
+        display_none,
+        display_block
     } = styles;
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -48,10 +50,16 @@ const Sidebar = ({ menuValue }) => {
         setSelectThemeValue((preState) => (preState === themeItem ? initialSelectThemeValue : themeItem));
     }
     const selectCityHandler = (e) => {
-        setSelectCityValue({ chineseName: e.target.textContent, urlPathName: e.target.value })
+        setSelectCityValue(
+            {
+                chineseName: e.target.textContent
+                , urlPathName: e.target.value
+            }
+        )
         distnationFunction(false);
     }
-    const searchHandler = () => {
+    const searchHandler = (e) => {
+        e.preventDefault();
         let queryString = new URLSearchParams(selectThemeValue.queryObject).toString();
         let city = "";
         if (selectCityValue.urlPathName !== "") {
@@ -63,10 +71,8 @@ const Sidebar = ({ menuValue }) => {
             selectThemeValueObject.$filter += ` and contains(${selectThemeValue.visitType}Name,'${searchInput.trim()}')`
             queryString = new URLSearchParams(selectThemeValueObject).toString();
         }
-        console.log(selectThemeValue);
         dispatch(changeTitle("搜尋結果"));
         let url = `${selectThemeValue.visitType}${city}/1/?${queryString}`;
-        console.log(url);
         navigate(`/search/${url}`);
     }
     return (
@@ -77,8 +83,13 @@ const Sidebar = ({ menuValue }) => {
                     <img src={drop_down} alt="drop_down" />
                 </button>
                 <div className={serch_keyword}>
-                    <input type="text" placeholder='搜尋關鍵字' onChange={(e) => { setSearchInput(e.target.value) }} />
-                    <img src={magnifying} alt="search" onClick={searchHandler} />
+                    <form onSubmit={(e) => searchHandler(e)}>
+                        <input type="text"
+                            placeholder='搜尋關鍵字'
+                            onChange={(e) => (setSearchInput(e.target.value))}
+                        />
+                        <img src={magnifying} alt="search" onClick={searchHandler} />
+                    </form>
                 </div>
                 <div className={`${wrap_destination_city} ${distnationValue ? destination_show : ""}`}>
                     {allCityArray.map((city, index) => {
@@ -103,8 +114,8 @@ const Sidebar = ({ menuValue }) => {
                     ))}
                 </ul>
             </div>
+            <button className={`${start_search} ${menuValue ? display_block : display_none}`}>開始搜尋</button>
         </div>
     )
 }
-
 export default Sidebar

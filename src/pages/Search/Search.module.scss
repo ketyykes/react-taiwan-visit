@@ -37,8 +37,12 @@
   gap: 12px;
 }
 .display_none {
-  display: none;
+  @include breakpoint.tablet {
+    display: none;
+  }
 }
 .display_block {
-  display: block;
+  @include breakpoint.tablet {
+    display: block;
+  }
 }

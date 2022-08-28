@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './card.module.scss';
 import banner from '../../assets/images/banner.png';
+
+
 const Card = ({ placeDatum, visitType, children }) => {
     const { card, wrap_img } = styles;
     const navigate = useNavigate();

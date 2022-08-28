@@ -12,10 +12,3 @@ const config = {
   data: qs.stringify(data),
   url,
 };
-export const fetchAuth = async () => {
-  try {
-    return await axios(config);
-  } catch (error) {
-    console.log(error);
-  }
-};

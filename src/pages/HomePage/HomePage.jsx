@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './homepage.module.scss';
-import useToggle from '../../hook/useToggle';
-import useGetPlaceData from '../../hook/useGetPlaceData';
+import { useToggle, useGetPlaceData } from '../../hook';
 import { Aside, Header, Banner, ThemeSection, Footer } from '../../component'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 

@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 let now = dayjs().format("YYYY-MM-DD");
+
 export function queryStringCreator({ $select, $filter, $top }) {
   const object = {};
   if ($select) {

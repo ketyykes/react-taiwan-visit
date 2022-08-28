@@ -143,3 +143,36 @@
 .destination_show {
   max-height: 100vh;
 }
+.start_search {
+  @include breakpoint.tablet {
+    position: fixed;
+    font-size: variable.$font_mobile_body1;
+    color: #fff;
+    left: 48px;
+    width: calc(100% - 96px);
+    border-radius: 8px;
+    padding: 10px 0;
+    height: 50px;
+    bottom: 3%;
+    background-color: variable.$primary_color1;
+    transform: scale(1);
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+    &:active {
+      color: #fff;
+    }
+  }
+}
+
+.display_none {
+  @include breakpoint.tablet {
+    display: none;
+  }
+}
+.display_block {
+  @include breakpoint.tablet {
+    display: block;
+  }
+}

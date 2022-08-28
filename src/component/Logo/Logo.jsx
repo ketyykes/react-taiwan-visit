@@ -1,6 +1,5 @@
 import React from 'react'
-import logo from '../../assets/images/logo.png';
-import toggle from '../../assets/images/toggle.png';
+import { logo, toggle } from '../../assets/images';
 import styles from './logo.module.scss';
 
 const Logo = ({ menuValueFunction }) => {

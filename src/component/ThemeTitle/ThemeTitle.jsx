@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from './theme_title.module.scss';
-import location_purple from '../../assets/images/location_purple.png';
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import styles from './theme_title.module.scss';
+import location_purple from '../../assets/images/location_purple.png';
 import { changeTitle } from '../../store/searchSlice'
 const ThemeTitle = ({ visitType, title, moreQuery }) => {
     const { wrap_visit_type_title } = styles;

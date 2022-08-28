@@ -1,11 +1,9 @@
 import React from 'react'
-import styles from './detail.module.scss'
-import useGetPlaceData from '../../hook/useGetPlaceData';
-import useToggle from '../../hook/useToggle';
-import { Aside, Header, Footer, Card } from '../../component'
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
 import { useParams, useSearchParams } from "react-router-dom";
-import useRandomPlaceQuery from '../../hook/useRandomPlaceQuery';
+import styles from './detail.module.scss'
+import { useGetPlaceData, useToggle, useRandomPlaceQuery } from '../../hook'
+import { Aside, Header, Footer, Card } from '../../component'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 
 
@@ -21,15 +19,13 @@ const Detail = () => {
         , display_block
         , article, wrap_content
         , visit_img, wrap_information,
-        wrap_introduction, wrap_map, wrap_transportation, wrap_more_visitplace
+        wrap_introduction, wrap_card, wrap_map, wrap_transportation, wrap_more_visitplace
     } = styles;
     const [searchParams, setSearchParams] = useSearchParams();
     const [menuValue, menuValueFunction] = useToggle(false);
     const { visitType } = useParams();
     const detailData = useGetPlaceData(visitType, searchParams);
-    const randomPlace = useRandomPlaceQuery(visitType);
-
-
+    const randomPlace = useRandomPlaceQuery(visitType, 3);
     const { Picture: { PictureUrl1 } = {},
         Position: { PositionLat = 23.5, PositionLon = 121 } = {},
         Description, DescriptionDetail,
@@ -59,7 +55,7 @@ const Detail = () => {
                     </div>
                     <div className={wrap_transportation}>
                         <h3>交通方式</h3>
-                        <div className={wrap_map} style={{ height: "100%", width: "100%" }} >
+                        <div className={wrap_map}  >
                             <MapContainer scrollWheelZoom={true}>
                                 <ChangeView center={[PositionLat, PositionLon]} zoom={13} />
                                 <TileLayer
@@ -77,7 +73,7 @@ const Detail = () => {
                     <div className={wrap_more_visitplace}>
                         <h3>更多景點</h3>
                     </div>
-                    <div>
+                    <div className={wrap_card}>
                         {
                             randomPlace.map(
                                 (place, index) =>

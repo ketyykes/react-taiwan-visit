@@ -1,15 +1,12 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import styles from "./pagination.module.scss"
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft, faAnglesRight, faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Pagination = ({ itemAmount, visitType, currentPage }) => {
+const Pagination = ({ route, itemAmount, visitType, currentPage }) => {
     const { wrap_pagination, current_page_button, common_page_button, visibility_visible, visibility_hidden } = styles;
     let totalPage = (Math.ceil(itemAmount / 12));
-
-
-
     function makePaginationButtonValue(
         { totalPage,
             currentPage,
@@ -17,7 +14,6 @@ const Pagination = ({ itemAmount, visitType, currentPage }) => {
         }
     ) {
         //算總頁數
-
         //算出所有的頁數的陣列
         const totalPageNumberArray = Array.from({
             length: totalPage
@@ -38,20 +34,21 @@ const Pagination = ({ itemAmount, visitType, currentPage }) => {
 
     const clickPageButtonHandler = (e) => {
         let pageNumber = e.target.value;
-        navigate(`/search/${visitType}/all/${pageNumber}?${searchParams}`)
+        navigate(`/${route}/${visitType}/all/${pageNumber}?${searchParams}`)
     }
     const clickFirstPageButtonHandler = () => {
-        navigate(`/search/${visitType}/all/1?${searchParams}`);
+        navigate(`/${route}/${visitType}/all/1?${searchParams}`);
     }
     const clickPreviousPageButtonHandler = () => {
-        navigate(`/search/${visitType}/all/${currentPage - 1}?${searchParams}`)
+        navigate(`/${route}/${visitType}/all/${currentPage - 1}?${searchParams}`)
     }
     const clickNextPageButtonHandler = () => (
-        navigate(`/search/${visitType}/all/${currentPage + 1}?${searchParams}`)
+        navigate(`/${route}/${visitType}/all/${currentPage + 1}?${searchParams}`)
     )
     const clickLastPageButtonHandler = () => (
-        navigate(`/search/${visitType}/all/${totalPage}?${searchParams}`)
+        navigate(`/${route}/${visitType}/all/${totalPage}?${searchParams}`)
     )
+    const location = useLocation();
     return (
         <div className={wrap_pagination}>
             <button className={currentPage === 1
@@ -71,7 +68,6 @@ const Pagination = ({ itemAmount, visitType, currentPage }) => {
                     icon={faAngleLeft}
                 />
             </button>
-
             {
                 paginationButtonValueArray.map(
                     (element, index) => (

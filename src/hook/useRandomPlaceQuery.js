@@ -6,16 +6,17 @@ import {
 } from "../assets/visitTypeQuery.js";
 import useGetPlaceData from "./useGetPlaceData";
 
-function makeRandomNumberArray(range, number) {
+function makeRandomNumberArray(range, quantity) {
+  if (range < quantity) return [];
   let set = new Set();
-  for (let index = 0; index < number; index++) {
+  for (let index = 0; index < quantity; index++) {
     let randomNumber = Math.floor(Math.random() * range);
     set.has(randomNumber) ? index-- : set.add(randomNumber);
   }
   return Array.from(set);
 }
 
-export default function useRandomPlaceQuery(visitType) {
+export default function useRandomPlaceQuery(visitType, quantity) {
   let paramsQuery;
   if (visitType === "ScenicSpot") {
     paramsQuery = SCENICSPOT_MORE_QUERY;
@@ -30,11 +31,9 @@ export default function useRandomPlaceQuery(visitType) {
     paramsQuery = HOTEL_MORE_QUERY;
   }
   const allData = useGetPlaceData(visitType, paramsQuery);
-  const randomNumberArray = makeRandomNumberArray(allData.length, 3);
-  const returnData = [
-    allData[randomNumberArray[0]],
-    allData[randomNumberArray[1]],
-    allData[randomNumberArray[2]],
-  ];
+  const randomNumberArray = makeRandomNumberArray(allData.length, quantity);
+  const returnData = randomNumberArray.map(
+    (randomNumber) => (randomNumber = allData[randomNumber])
+  );
   return returnData;
 }

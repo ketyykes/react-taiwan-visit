@@ -1,11 +1,13 @@
 import React from 'react'
 import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+
 import styles from './detail.module.scss'
 import { useGetPlaceData, useToggle, useRandomPlaceQuery } from '../../hook'
 import { Aside, Header, Footer, Card } from '../../component'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
-
 
 function ChangeView({ center, zoom }) {
     const map = useMap();
@@ -14,14 +16,23 @@ function ChangeView({ center, zoom }) {
 }
 
 const Detail = () => {
-    const { container
-        , display_none
-        , display_block
-        , article, wrap_content
-        , visit_img, wrap_information,
-        wrap_introduction, wrap_card, wrap_map, wrap_transportation, wrap_more_visitplace
+    const { container,
+        display_none,
+        display_block,
+        article,
+        wrap_content,
+        visit_img,
+        wrap_information,
+        wrap_introduction,
+        wrap_card,
+        wrap_map,
+        wrap_transportation,
+        wrap_more_visitplace,
+        visit_name,
+        previous_icon
     } = styles;
     const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
     const [menuValue, menuValueFunction] = useToggle(false);
     const { visitType } = useParams();
     const detailData = useGetPlaceData(visitType, searchParams);
@@ -40,7 +51,13 @@ const Detail = () => {
             />
             <Header menuValue={menuValue} >
                 <h2>
-                    {visitName}
+                    <FontAwesomeIcon
+                        size="sm"
+                        icon={faAngleLeft}
+                        onClick={() => navigate(-1)}
+                        className={previous_icon}
+                    />
+                    <span className={visit_name}>{visitName}</span>
                 </h2>
             </Header>
             <article className={`${article} ${menuValue ? display_none : display_block}`}>

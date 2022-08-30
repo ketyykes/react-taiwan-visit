@@ -36,6 +36,9 @@
   flex-wrap: wrap;
   gap: 12px;
 }
+.no_result {
+  font-size: variable.$font_size2;
+}
 .display_none {
   @include breakpoint.tablet {
     display: none;

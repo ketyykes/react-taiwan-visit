@@ -18,7 +18,17 @@
       "footer";
   }
 }
-
+.visit_name {
+  margin-left: 24px;
+}
+.previous_icon {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+  &:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+}
 .article {
   padding: 24px;
 }

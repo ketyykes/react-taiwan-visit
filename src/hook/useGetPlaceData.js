@@ -24,6 +24,7 @@ export default function useGetPlaceData(pathUrl, params, city = "all") {
         console.log(config);
         try {
           const { data } = await visitInstance(config);
+          console.log(data);
           setPlace(data);
         } catch (error) {
           console.log(error);

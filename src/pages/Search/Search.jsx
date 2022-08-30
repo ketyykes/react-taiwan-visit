@@ -8,7 +8,7 @@ import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisit
 const Search = () => {
     const {
         display_none, display_block,
-        container, article, wrap_card, title_type } = styles;
+        container, article, wrap_card, title_type, no_result } = styles;
     const [menuValue, menuValueFunction] = useToggle(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const params = useParams();
@@ -31,17 +31,30 @@ const Search = () => {
             <article className={`${article} ${menuValue ? display_none : display_block}`}>
                 <div className={wrap_card}>
                     {
-                        renderData.map(
-                            (place, index) =>
-                            (
-                                <Card key={index} visitType={visitType} placeDatum={place}>
-                                    <CardContent placeDatum={place} />
-                                </Card>
+                        renderData.length !== 0 ? (
+                            renderData.map(
+                                (place, index) =>
+                                (
+                                    <Card key={index}
+                                        visitType={visitType}
+                                        placeDatum={place}>
+                                        <CardContent placeDatum={place} />
+                                    </Card>
+                                )
                             )
-                        )
+                        ) : (<span className={no_result}>找不到你所搜尋的內容</span>)
                     }
                 </div>
-                <Pagination route="search" currentPage={+page} itemAmount={data.length} visitType={visitType} />
+                {
+                    renderData.length !== 0 && (<Pagination
+                        route="search"
+                        city={city}
+                        currentPage={+page}
+                        itemAmount={data.length}
+                        visitType={visitType}
+                    />)
+                }
+
             </article>
             <Footer menuValue={menuValue} />
         </div >

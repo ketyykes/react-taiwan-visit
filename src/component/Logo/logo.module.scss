@@ -24,11 +24,23 @@
     position: relative;
     text-align: center;
     .wrap_toggle {
+      img {
+        display: block;
+      }
+      padding: 6px;
+      border-radius: 8px;
       position: absolute;
       left: 0;
       top: 0;
       display: block;
       cursor: pointer;
+      background-color: variable.$primary_color3;
+      &:hover {
+        background-color: variable.$primary_color2;
+      }
+      &:active {
+        background-color: variable.$primary_color3;
+      }
     }
   }
 }

@@ -6,7 +6,7 @@ const Aside = ({ menuValueFunction, menuValue }) => {
     return (
         <aside className={aside}>
             <Logo menuValueFunction={menuValueFunction} />
-            <Sidebar menuValue={menuValue} />
+            <Sidebar menuValue={menuValue} menuValueFunction={menuValueFunction} />
         </aside>
     )
 }

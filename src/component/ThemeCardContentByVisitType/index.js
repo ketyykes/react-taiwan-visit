@@ -1,7 +1,7 @@
 import styles from "./ThemeCardContent.module.scss";
 import dayjs from "dayjs";
 import { location_green, clock, calling } from "../../assets/images";
-const { wrap_information, wrap_location } = styles;
+const { wrap_information, wrap_location, wrap_time_or_phone } = styles;
 const ThemeCardContentByVisitType = {
   ScenicSpot: ({ placeDatum: { Address, OpenTime } = {} }) => {
     return (
@@ -12,9 +12,9 @@ const ThemeCardContentByVisitType = {
               <img src={location_green} alt="location" />
               {Address}
             </div>
-            <div>
+            <div className={wrap_time_or_phone}>
               <img src={clock} alt="clock" />
-              {OpenTime}
+              <span>{OpenTime}</span>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ const ThemeCardContentByVisitType = {
             <img src={location_green} alt="location" />
             {Address}
           </div>
-          <div>
+          <div className={wrap_time_or_phone}>
             <img src={clock} alt="clock" />
             {(() => {
               const createTempleteDiv = document.createElement("div");
@@ -49,7 +49,7 @@ const ThemeCardContentByVisitType = {
             <img src={location_green} alt="location" />
             {Address}
           </div>
-          <div>
+          <div className={wrap_time_or_phone}>
             <img src={calling} alt="clock" />
             <span>{Phone}</span>
           </div>
@@ -65,7 +65,7 @@ const ThemeCardContentByVisitType = {
             <img src={location_green} alt="location" />
             {Address}
           </div>
-          <div>
+          <div className={wrap_time_or_phone}>
             <img src={clock} alt="clock" />
             <span>{`${dayjs(StartTime).format("YYYY/MM/DD")}~${dayjs(
               EndTime

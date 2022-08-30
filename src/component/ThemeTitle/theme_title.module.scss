@@ -13,6 +13,25 @@
     color: variable.$primary_color1;
     a {
       color: variable.$primary_color1;
+      position: relative;
+      padding: 10px 0px;
+      white-space: nowrap;
+      &:after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background: variable.$primary_color1;
+        transform: scaleX(0);
+        transform-origin: bottom left;
+        border-radius: 4px;
+      }
+      &:hover:after {
+        transition: transform 0.5s;
+        transform: scaleX(1);
+      }
     }
   }
 }

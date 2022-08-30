@@ -27,11 +27,18 @@
 }
 .wrap_img {
   overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   img {
     height: 200px;
     width: 100%;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }
 .wrap_information {
@@ -41,5 +48,22 @@
   img {
     vertical-align: middle;
   }
-  line-height: 1.5;
+  line-height: 2;
 }
+
+// .wrap_information {
+//   padding: 8px 20px;
+// }
+// .wrap_location {
+//   img {
+//     vertical-align: middle;
+//   }
+//   line-height: 1.5;
+// }
+// .wrap_time_or_phone {
+//   display: inline-block;
+//   line-height: 24px;
+//   span {
+//     font-size: 48px;
+//   }
+// }

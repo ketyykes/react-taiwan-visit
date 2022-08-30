@@ -4,7 +4,7 @@ import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft, faAnglesRight, faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 
-const Pagination = ({ route, itemAmount, visitType, currentPage }) => {
+const Pagination = ({ route, itemAmount, visitType, currentPage, city }) => {
     const { wrap_pagination, current_page_button, common_page_button, visibility_visible, visibility_hidden } = styles;
     let totalPage = (Math.ceil(itemAmount / 12));
     function makePaginationButtonValue(
@@ -34,21 +34,20 @@ const Pagination = ({ route, itemAmount, visitType, currentPage }) => {
 
     const clickPageButtonHandler = (e) => {
         let pageNumber = e.target.value;
-        navigate(`/${route}/${visitType}/all/${pageNumber}?${searchParams}`)
+        navigate(`/${route}/${visitType}/${city}/${pageNumber}?${searchParams}`)
     }
     const clickFirstPageButtonHandler = () => {
-        navigate(`/${route}/${visitType}/all/1?${searchParams}`);
+        navigate(`/${route}/${visitType}/${city}/1?${searchParams}`);
     }
     const clickPreviousPageButtonHandler = () => {
-        navigate(`/${route}/${visitType}/all/${currentPage - 1}?${searchParams}`)
+        navigate(`/${route}/${visitType}/${city}/${currentPage - 1}?${searchParams}`)
     }
     const clickNextPageButtonHandler = () => (
-        navigate(`/${route}/${visitType}/all/${currentPage + 1}?${searchParams}`)
+        navigate(`/${route}/${visitType}/${city}/${currentPage + 1}?${searchParams}`)
     )
     const clickLastPageButtonHandler = () => (
-        navigate(`/${route}/${visitType}/all/${totalPage}?${searchParams}`)
+        navigate(`/${route}/${visitType}/${city}/${totalPage}?${searchParams}`)
     )
-    const location = useLocation();
     return (
         <div className={wrap_pagination}>
             <button className={currentPage === 1

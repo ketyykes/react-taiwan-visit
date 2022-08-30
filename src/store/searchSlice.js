@@ -11,9 +11,6 @@ export const selectResultSlice = createSlice({
     changeTitle: (state, action) => {
       state.title = action.payload;
     },
-    changeCity: (state, action) => {
-      state.city = action.payload;
-    },
   },
 });
 

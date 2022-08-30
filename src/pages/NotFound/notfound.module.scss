@@ -1,0 +1,24 @@
+@use "../../styles/breakpoint";
+@use "../../styles/variable";
+.container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  grid-template-areas:
+    "sidebar  header"
+    "sidebar  article"
+    "sidebar  footer"
+    "sidebar  ."
+    "sidebar       .";
+  @include breakpoint.tablet {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sidebar "
+      "header"
+      "article"
+      "footer";
+  }
+}
+
+.article {
+  padding: 24px;
+}

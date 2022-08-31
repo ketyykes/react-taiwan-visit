@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-taiwan-visit/static/css/main.9d1b46e4.css",
+    "main.js": "/react-taiwan-visit/static/js/main.5c1ed021.js",
+    "static/media/banner.png": "/react-taiwan-visit/static/media/banner.5618f00190191a3cae69.png",
+    "index.html": "/react-taiwan-visit/index.html",
+    "main.9d1b46e4.css.map": "/react-taiwan-visit/static/css/main.9d1b46e4.css.map",
+    "main.5c1ed021.js.map": "/react-taiwan-visit/static/js/main.5c1ed021.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d1b46e4.css",
+    "static/js/main.5c1ed021.js"
+  ]
+}

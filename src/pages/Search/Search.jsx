@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useParams, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styles from './search.module.scss';
@@ -10,13 +10,13 @@ const Search = () => {
         display_none, display_block,
         container, article, wrap_card, title_type, no_result } = styles;
     const [menuValue, menuValueFunction] = useToggle(false);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const params = useParams();
     const { visitType, city, page } = params;
     const data = useGetPlaceData(visitType, searchParams.toString(), city);
     const renderData = data.slice((page - 1) * 12, page * 12);
     const CardContent = ThemeCardContentByVisitType[visitType];
-    const { title } = useSelector(state => state.selectResult);
+    let { title } = useSelector(state => state.selectResult);
     return (
         <div className={container}>
             <Aside
@@ -25,7 +25,7 @@ const Search = () => {
             />
             <Header >
                 <h2 className={`${title_type} ${menuValue ? display_none : display_block}`}>
-                    {title}
+                    {title ||= "搜尋結果"}
                 </h2>
             </Header>
             <article className={`${article} ${menuValue ? display_none : display_block}`}>

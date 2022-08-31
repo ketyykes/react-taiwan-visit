@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   title: "",
-  city: "",
+  theme: "",
 };
 
 export const selectResultSlice = createSlice({
@@ -14,6 +14,5 @@ export const selectResultSlice = createSlice({
   },
 });
 
-export const { changeTitle, changeCity, changeIdType } =
-  selectResultSlice.actions;
+export const { changeTitle } = selectResultSlice.actions;
 export default selectResultSlice.reducer;

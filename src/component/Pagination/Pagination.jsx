@@ -1,6 +1,6 @@
-import React, { useReducer } from 'react'
+import React from 'react'
 import styles from "./pagination.module.scss"
-import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft, faAnglesRight, faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -29,30 +29,39 @@ const Pagination = ({ route, itemAmount, visitType, currentPage, city }) => {
     }
     const paginationButtonValueArray = makePaginationButtonValue({ totalPage, itemAmount, currentPage })
     const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
-
-    const clickPageButtonHandler = (e) => {
-        let pageNumber = e.target.value;
+    const clickPageButtonHandler = (e, pageButton) => {
+        let pageNumber;
+        switch (pageButton) {
+            case 'page':
+                pageNumber = e.target.value;
+                break;
+            case 'prePage':
+                pageNumber = currentPage - 1;
+                break;
+            case 'nextPage':
+                pageNumber = currentPage + 1;
+                break;
+            case 'firstPage':
+                pageNumber = 1;
+                break;
+            case 'lastPage':
+                pageNumber = totalPage;
+                break;
+            default:
+                pageNumber = 1;
+                break;
+        }
         navigate(`/${route}/${visitType}/${city}/${pageNumber}?${searchParams}`)
     }
-    const clickFirstPageButtonHandler = () => {
-        navigate(`/${route}/${visitType}/${city}/1?${searchParams}`);
-    }
-    const clickPreviousPageButtonHandler = () => {
-        navigate(`/${route}/${visitType}/${city}/${currentPage - 1}?${searchParams}`)
-    }
-    const clickNextPageButtonHandler = () => (
-        navigate(`/${route}/${visitType}/${city}/${currentPage + 1}?${searchParams}`)
-    )
-    const clickLastPageButtonHandler = () => (
-        navigate(`/${route}/${visitType}/${city}/${totalPage}?${searchParams}`)
-    )
+
     return (
         <div className={wrap_pagination}>
             <button className={currentPage === 1
                 ? visibility_hidden : visibility_visible}
-                onClick={clickFirstPageButtonHandler}>
+                onClick={(e) => (clickPageButtonHandler(e, "firstPage"))}
+            >
                 <FontAwesomeIcon
                     size="xl"
                     icon={faAnglesLeft}
@@ -60,7 +69,7 @@ const Pagination = ({ route, itemAmount, visitType, currentPage, city }) => {
             </button>
             <button className={currentPage === 1
                 ? visibility_hidden : visibility_visible}
-                onClick={clickPreviousPageButtonHandler}
+                onClick={(e) => (clickPageButtonHandler(e, "prePage"))}
             >
                 <FontAwesomeIcon
                     size="xl"
@@ -74,7 +83,7 @@ const Pagination = ({ route, itemAmount, visitType, currentPage, city }) => {
                             className={`${currentPage === element ? current_page_button : common_page_button}`}
                             value={element}
                             key={index}
-                            onClick={(e) => clickPageButtonHandler(e)}
+                            onClick={(e) => clickPageButtonHandler(e, "page")}
                         >
                             {element}
                         </button>)
@@ -82,7 +91,7 @@ const Pagination = ({ route, itemAmount, visitType, currentPage, city }) => {
             }
             <button className={currentPage === totalPage
                 ? visibility_hidden : visibility_visible}
-                onClick={clickNextPageButtonHandler}
+                onClick={(e) => clickPageButtonHandler(e, "nextPage")}
             >
                 <FontAwesomeIcon
                     size="xl"
@@ -91,7 +100,7 @@ const Pagination = ({ route, itemAmount, visitType, currentPage, city }) => {
             </button>
             <button className={currentPage === totalPage
                 ? visibility_hidden : visibility_visible
-            } onClick={clickLastPageButtonHandler} >
+            } onClick={(e) => clickPageButtonHandler(e, "lastPage")} >
                 <FontAwesomeIcon
                     size="xl"
                     icon={faAnglesRight}

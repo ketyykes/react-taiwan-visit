@@ -1,6 +1,6 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react'
-import { Card, Pagination } from '../../component'
-import { useParams, useSearchParams, useLocation } from "react-router-dom";
+import React, { useRef, useState, useEffect } from 'react'
+import { Card } from '../../component'
+import { useParams, } from "react-router-dom";
 import { useRandomPlaceQuery } from '../../hook'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 import styles from './Infinite.module.scss';
@@ -10,13 +10,11 @@ const Infinite = () => {
     const { wrap_card } = styles;
     const params = useParams();
     const [page, setPage] = useState(1);
-    // const { page } = params;
     console.log(data);
     const renderData = data.slice(0 * 12, page * 12);
     const CardContent = ThemeCardContentByVisitType["ScenicSpot"];
     const morePicture = () => {
         setPage(prev => prev + 1);
-        console.log("test");
     }
     const divRef = useRef();
     useEffect(() => {

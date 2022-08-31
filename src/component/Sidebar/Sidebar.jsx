@@ -1,17 +1,19 @@
 import React, { useReducer } from 'react'
 import { useDispatch } from 'react-redux';
 import { changeTitle } from '../../store/searchSlice'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import queryReducer from './queryReducer';
-import { SELECT_CITY, SEARCH_INPUT } from "./queryActionType";
+import { selectCity, searchInput } from './queryActionCreator'
 import queryInitState from './queryInitState';
+
 import styles from './sidebar.module.scss';
 import { magnifying, drop_down } from '../../assets/images'
 import allCityArray from '../../assets/allCityArray';
 import allThemeArray from '../../assets/allThemeArray';
 import useToggle from '../../hook/useToggle.js';
 
-const Sidebar = ({ menuValue }) => {
+const Sidebar = ({ menuValue, menuValueFunction }) => {
     const {
         wrap_destination_city,
         serch_keyword,
@@ -31,18 +33,27 @@ const Sidebar = ({ menuValue }) => {
     } = styles;
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+    const themeName = location?.state?.themeName;
     const [distnationValue, distnationFunction] = useToggle(false);
     const selectThemeHandler = (themeItem) => {
         let queryString = new URLSearchParams(themeItem.queryObject).toString();
-        let urlPathName = "all"
+        dispatch(changeTitle(themeItem.chineseName))
+        let urlPathName = "all";
         let url = `${themeItem.visitType}/${urlPathName}/1/?${queryString}`;
-        navigate(`/search/${url}`);
+        menuValueFunction(false)
+        navigate(`/search/${url}`, {
+            state: {
+                themeName: themeItem.title
+            }, replace: true
+        });
     }
     const searchHandler = (e) => {
         e.preventDefault();
         let queryString = new URLSearchParams(queryState.queryObject).toString();
         queryState.urlPathName !== "all" ? dispatch(changeTitle(queryState.chineseName)) : dispatch(changeTitle("搜尋結果"));
         let url = `${queryState.visitType}/${queryState.urlPathName}/1/?${queryString}`;
+        menuValueFunction(false);
         navigate(`/search/${url}`);
     }
     const [queryState, qDispatch] = useReducer(queryReducer, queryInitState);
@@ -63,10 +74,7 @@ const Sidebar = ({ menuValue }) => {
                             placeholder='搜尋關鍵字'
                             onChange={
                                 (e) => {
-                                    qDispatch({
-                                        type: SEARCH_INPUT,
-                                        payload: e.target.value
-                                    })
+                                    qDispatch(searchInput(e.target.value))
                                 }
                             }
                         />
@@ -80,11 +88,8 @@ const Sidebar = ({ menuValue }) => {
                                 city.urlPathName === queryState.urlPathName ? select_city : null
                             }
                             onClick={
-                                (e) => {
-                                    qDispatch({
-                                        type: SELECT_CITY,
-                                        payload: city
-                                    })
+                                () => {
+                                    qDispatch(selectCity(city))
                                     distnationFunction(false)
                                 }
                             } >
@@ -95,19 +100,9 @@ const Sidebar = ({ menuValue }) => {
                 <ul className={best_topic}>
                     {allThemeArray.map((themeItem, index) => (
                         <li key={index}
-                            className={
-                                queryState.title === themeItem.title ? select_theme : null
-                            }
+                            className={themeName === themeItem.title ? select_theme : null}
                             onClick={
-                                (e) => {
-                                    // console.log(themeItem);
-                                    // qDispatch(
-                                    //     {
-                                    //         type: SELECT_THEME,
-                                    //         payload: themeItem
-                                    //     }
-                                    // )
-                                    // searchHandler(e);
+                                () => {
                                     selectThemeHandler(themeItem)
                                 }
                             }

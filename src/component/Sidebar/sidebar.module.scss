@@ -5,7 +5,6 @@
   overflow: visible;
   position: relative;
   @include breakpoint.tablet {
-    outline: 1px solid orange;
     max-height: 0;
     overflow: hidden;
   }

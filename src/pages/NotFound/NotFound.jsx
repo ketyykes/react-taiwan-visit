@@ -18,8 +18,9 @@ const NotFound = () => {
             <Header menuValue={menuValue} >
                 <Banner />
             </Header>
-            {/* <article className={`${article} ${menuValue ? display_none : display_block}`}>
-            </article> */}
+            <article className={`${article} ${menuValue ? display_none : display_block}`}>
+                找不到該分頁
+            </article>
             <Footer menuValue={menuValue} />
         </div >
     )

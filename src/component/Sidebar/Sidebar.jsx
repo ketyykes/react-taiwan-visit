@@ -117,7 +117,7 @@ const Sidebar = ({ menuValue, menuValueFunction }) => {
                     ))}
                 </ul>
             </div>
-            <button className={`${start_search} ${menuValue ? display_block : display_none}`}>開始搜尋</button>
+            <button className={`${start_search} ${menuValue ? display_block : display_none}`} onClick={searchHandler}>開始搜尋</button>
         </div >
     )
 }

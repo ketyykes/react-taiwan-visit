@@ -7,7 +7,7 @@ const Logo = ({ menuValueFunction }) => {
     const { wrap_logo, wrap_toggle } = styles;
     return (
         <div className={wrap_logo}>
-            <Link to="/">
+            <Link to="/react-taiwan-visit/">
                 <img src={logo} alt="logo" />
             </Link>
             <button className={wrap_toggle} onClick={menuValueFunction}>

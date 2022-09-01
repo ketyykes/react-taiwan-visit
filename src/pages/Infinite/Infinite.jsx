@@ -5,14 +5,16 @@ import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisit
 import styles from './Infinite.module.scss';
 
 const Infinite = () => {
-    const data = useRandomPlaceQuery("ScenicSpot", 2000);
+    const data = useRandomPlaceQuery("ScenicSpot", 38);
     const { wrap_card } = styles;
     const [page, setPage] = useState(1);
     console.log(data);
+    console.log(page);
+    let totalPage = (Math.ceil(data.length / 12));
     const renderData = data.slice(0 * 12, page * 12);
     const CardContent = ThemeCardContentByVisitType["ScenicSpot"];
     const morePicture = () => {
-        setPage(prev => prev + 1);
+        setPage(prev => prev === totalPage ? totalPage : prev + 1);
         console.log("test");
     }
     const divRef = useRef();
@@ -47,7 +49,6 @@ const Infinite = () => {
                     )
                 }
                 <div ref={divRef}></div>
-                <button style={{ fontSize: "50px" }} onClick={morePicture}>Load More</button>
             </div>
         </>
     )

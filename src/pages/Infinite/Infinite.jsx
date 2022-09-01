@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { Card } from '../../component'
-import { useParams } from "react-router-dom";
 import { useRandomPlaceQuery } from '../../hook'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 import styles from './Infinite.module.scss';

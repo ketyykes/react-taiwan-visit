@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound/NotFound"
 const ViewRoutes = () => {
     return (
         <Routes>
-            <Route path="/react-taiwan-visit/" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/search/:visitType/:city/:page" element={<Search />} />
             <Route path="/detail/:visitType" element={<Detail />} />
             <Route path="/infinite/ScenicSpot/all/:page" element={<Infinite />} />

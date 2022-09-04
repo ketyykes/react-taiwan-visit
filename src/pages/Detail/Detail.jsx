@@ -31,7 +31,7 @@ const Detail = () => {
         visit_name,
         previous_icon
     } = styles;
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const [menuValue, menuValueFunction] = useToggle(false);
     const { visitType } = useParams();

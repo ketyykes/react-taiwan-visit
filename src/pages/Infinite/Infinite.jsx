@@ -13,10 +13,6 @@ const Infinite = () => {
     let totalPage = (Math.ceil(data.length / 12));
     const renderData = data.slice(0 * 12, page * 12);
     const CardContent = ThemeCardContentByVisitType["ScenicSpot"];
-    const morePicture = () => {
-        setPage(prev => prev === totalPage ? totalPage : prev + 1);
-        console.log("test");
-    }
     const divRef = useRef();
     useEffect(() => {
         const io = new IntersectionObserver((entries) => {

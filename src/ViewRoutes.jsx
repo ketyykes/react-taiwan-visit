@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import Search from "./pages/Search/Search";
 import Detail from "./pages/Detail/Detail";
@@ -13,7 +13,8 @@ const ViewRoutes = () => {
             <Route path="/search/:visitType/:city/:page" element={<Search />} />
             <Route path="/detail/:visitType" element={<Detail />} />
             <Route path="/infinite/ScenicSpot/all/:page" element={<Infinite />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path='/404' element={<NotFound />} />
+            <Route path="*" element={<Navigate replace to='/404' />} />
         </Routes>
     )
 }

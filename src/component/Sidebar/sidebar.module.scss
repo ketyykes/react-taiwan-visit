@@ -31,6 +31,10 @@
     padding: 8px 20px;
     font-size: variable.$font_desktop_body1;
     cursor: pointer;
+    &:hover {
+      background-color: variable.$primary_color1;
+      color: #fff;
+    }
   }
   .select_city {
     background-color: variable.$primary_color1;

@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from "./pagination.module.scss"
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./pagination.module.scss"
 import { faAngleRight, faAngleLeft, faAnglesRight, faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Pagination = ({ route, itemAmount, visitType, currentPage, city }) => {

@@ -1,6 +1,5 @@
 import React, { useReducer } from 'react'
 import { useDispatch } from 'react-redux';
-import { changeTitle } from '../../store/searchSlice'
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import queryReducer from './queryReducer';
@@ -8,6 +7,7 @@ import { selectCity, searchInput } from './queryActionCreator'
 import queryInitState from './queryInitState';
 
 import styles from './sidebar.module.scss';
+import { changeTitle } from '../../store/searchSlice'
 import { magnifying, drop_down } from '../../assets/images'
 import allCityArray from '../../assets/allCityArray';
 import allThemeArray from '../../assets/allThemeArray';
@@ -101,11 +101,7 @@ const Sidebar = ({ menuValue, menuValueFunction }) => {
                     {allThemeArray.map((themeItem, index) => (
                         <li key={index}
                             className={themeName === themeItem.title ? select_theme : null}
-                            onClick={
-                                () => {
-                                    selectThemeHandler(themeItem)
-                                }
-                            }
+                            onClick={() => selectThemeHandler(themeItem)}
                         >
                             <div>
                                 <img src={themeItem.image} alt={themeItem.title} />

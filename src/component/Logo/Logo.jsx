@@ -1,6 +1,6 @@
 import React from 'react'
-import { logo, toggle } from '../../assets/images';
 import { Link } from "react-router-dom";
+import { logo, toggle } from '../../assets/images';
 import styles from './logo.module.scss';
 
 const Logo = ({ menuValueFunction }) => {

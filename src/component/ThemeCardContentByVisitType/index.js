@@ -1,5 +1,5 @@
-import styles from "./ThemeCardContent.module.scss";
 import dayjs from "dayjs";
+import styles from "./ThemeCardContent.module.scss";
 import { location_green, clock, calling } from "../../assets/images";
 const { wrap_information, wrap_location, wrap_time_or_phone } = styles;
 const ThemeCardContentByVisitType = {

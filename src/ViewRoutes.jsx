@@ -1,10 +1,6 @@
 import React from 'react'
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage/HomePage";
-import Search from "./pages/Search/Search";
-import Detail from "./pages/Detail/Detail";
-import Infinite from "./pages/Infinite/Infinite";
-import NotFound from "./pages/NotFound/NotFound"
+import { HomePage, Search, Detail, Infinite, NotFound } from './pages'
 
 const ViewRoutes = () => {
     return (

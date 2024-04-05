@@ -3,10 +3,10 @@ import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-
 import styles from './detail.module.scss'
+
 import { useGetPlaceData, useToggle, useRandomPlaceQuery } from '../../hook'
-import { Aside, Header, Footer, Card } from '../../component'
+import { Aside, Header, Footer, Card, Loading } from '../../component'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
 
 function ChangeView({ center, zoom }) {
@@ -43,6 +43,8 @@ const Detail = () => {
         TravelInfo, [`${visitType}Name`]: visitName } = detailData?.[0] || {};
     const CardContent = ThemeCardContentByVisitType[visitType];
     const Information = ThemeCardContentByVisitType[visitType];
+
+    if (!detailData) return null;
     return (
         <div className={container}>
             <Aside
@@ -64,7 +66,9 @@ const Detail = () => {
                 <div className={wrap_content}>
                     <img className={visit_img} src={PictureUrl1} alt={visitName} />
                     <div className={wrap_information}>
-                        <Information placeDatum={detailData?.[0]} />
+                        {
+                            detailData === null ? <Loading /> : <Information placeDatum={detailData?.[0]} />
+                        }
                     </div>
                     <div className={wrap_introduction}>
                         <h3>景點介紹</h3>

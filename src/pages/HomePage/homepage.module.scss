@@ -1,35 +1,39 @@
 @use "../../styles/breakpoint";
 @use "../../styles/variable";
+@use "../../styles/utility";
+
 .container {
-  display: grid;
-  grid-template-columns: 350px 1fr;
-  grid-template-areas:
-    "sidebar  header"
-    "sidebar  article"
-    "sidebar  footer"
-    "sidebar  ."
-    "sidebar       .";
-  @include breakpoint.tablet {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "sidebar "
-      "header"
-      "article"
-      "footer";
-  }
+	display: grid;
+	grid-template-columns: 350px 1fr;
+	grid-template-areas:
+		"sidebar  header"
+		"sidebar  article"
+		"sidebar  footer"
+		"sidebar  ."
+		"sidebar       .";
+	@include breakpoint.tablet {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"sidebar "
+			"header"
+			"article"
+			"footer";
+	}
 }
 
 .article {
-  padding: 24px;
+	padding: 24px;
+	animation: fadeIn 2s ease-in-out forwards;
+	@include utility.applyFadeIn(2s, ease-in-out, forwards);
 }
 
 .display_none {
-  @include breakpoint.tablet {
-    display: none;
-  }
+	@include breakpoint.tablet {
+		display: none;
+	}
 }
 .display_block {
-  @include breakpoint.tablet {
-    display: block;
-  }
+	@include breakpoint.tablet {
+		display: block;
+	}
 }

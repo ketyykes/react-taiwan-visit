@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './theme_section.module.scss';
+import styles from './themeSection.module.scss';
 import { ThemeTitle, Card } from '../'
 const ThemeSection = ({ visitType, placeData, title, CardContent, moreQuery }) => {
     const { wrap_card } = styles;

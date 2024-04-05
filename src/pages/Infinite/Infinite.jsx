@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import { Card } from '../../component'
 import { useRandomPlaceQuery } from '../../hook'
 import ThemeCardContentByVisitType from '../../component/ThemeCardContentByVisitType';
-import styles from './Infinite.module.scss';
+import styles from './infinite.module.scss';
 
 const Infinite = () => {
     const data = useRandomPlaceQuery("ScenicSpot", 38);

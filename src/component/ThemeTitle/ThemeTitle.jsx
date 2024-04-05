@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import styles from './theme_title.module.scss';
+import styles from './themeTitle.module.scss';
 import location_purple from '../../assets/images/location_purple.png';
 import { changeTitle } from '../../store/searchSlice'
 const ThemeTitle = ({ visitType, title, moreQuery }) => {

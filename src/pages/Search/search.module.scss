@@ -1,51 +1,54 @@
 @use "../../styles/breakpoint";
 @use "../../styles/variable";
+@use "../../styles/utility";
+
 .container {
-  display: grid;
-  grid-template-columns: 350px 1fr;
-  grid-template-areas:
-    "sidebar header"
-    "sidebar article"
-    "sidebar footer"
-    "sidebar ."
-    "sidebar .";
-  @include breakpoint.tablet {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "sidebar"
-      "header"
-      "article"
-      "footer";
-  }
+	display: grid;
+	grid-template-columns: 350px 1fr;
+	grid-template-areas:
+		"sidebar header"
+		"sidebar article"
+		"sidebar ."
+		"sidebar ."
+		"sidebar footer";
+	@include breakpoint.tablet {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"sidebar"
+			"header"
+			"article"
+			"footer";
+	}
 }
 .header {
-  grid-area: header;
-  outline: 1px solid green;
-  padding: 24px;
+	grid-area: header;
+	outline: 1px solid green;
+	padding: 24px;
 }
 .title_type {
-  font-size: variable.$font_size2;
-  font-weight: 700;
+	font-size: variable.$font_size2;
+	font-weight: 700;
 }
 .article {
-  padding: 24px;
-  grid-area: article;
+	padding: 24px;
+	grid-area: article;
+	@include utility.applyFadeIn(2s, ease-in-out, forwards);
 }
 .wrap_card {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
 }
 .no_result {
-  font-size: variable.$font_size2;
+	font-size: variable.$font_size2;
 }
 .display_none {
-  @include breakpoint.tablet {
-    display: none;
-  }
+	@include breakpoint.tablet {
+		display: none;
+	}
 }
 .display_block {
-  @include breakpoint.tablet {
-    display: block;
-  }
+	@include breakpoint.tablet {
+		display: block;
+	}
 }

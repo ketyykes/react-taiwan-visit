@@ -31,7 +31,7 @@ export default function useRandomPlaceQuery(visitType, quantity) {
 		paramsQuery = HOTEL_MORE_QUERY;
 	}
 	const allData = useGetPlaceData(visitType, paramsQuery);
-	if (!allData === null) {
+	if (allData !== null) {
 		const randomNumberArray = makeRandomNumberArray(allData.length, quantity);
 		const returnData = randomNumberArray.map(
 			(randomNumber) => (randomNumber = allData[randomNumber])

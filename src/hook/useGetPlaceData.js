@@ -21,7 +21,6 @@ export default function useGetPlaceData(pathUrl, params, city = "all") {
 						Authorization: `${token_type} ${access_token}`,
 					},
 				};
-				// console.log(config);
 				try {
 					const { data } = await visitInstance(config);
 					setPlace(data);

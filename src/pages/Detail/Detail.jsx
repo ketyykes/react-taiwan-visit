@@ -37,6 +37,7 @@ const Detail = () => {
     const { visitType } = useParams();
     const detailData = useGetPlaceData(visitType, searchParams);
     const randomPlace = useRandomPlaceQuery(visitType, 3);
+
     const { Picture: { PictureUrl1 } = {},
         Position: { PositionLat = 23.5, PositionLon = 121 } = {},
         Description, DescriptionDetail,
@@ -44,7 +45,6 @@ const Detail = () => {
     const CardContent = ThemeCardContentByVisitType[visitType];
     const Information = ThemeCardContentByVisitType[visitType];
 
-    if (!detailData) return null;
     return (
         <div className={container}>
             <Aside
@@ -64,7 +64,7 @@ const Detail = () => {
             </Header>
             <article className={`${article} ${menuValue ? display_none : display_block}`}>
                 <div className={wrap_content}>
-                    <img className={visit_img} src={PictureUrl1} alt={visitName} />
+                    {PictureUrl1 && <img className={visit_img} src={PictureUrl1} alt={visitName} />}
                     <div className={wrap_information}>
                         {
                             detailData === null ? <Loading /> : <Information placeDatum={detailData?.[0]} />

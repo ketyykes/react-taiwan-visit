@@ -8,8 +8,6 @@ const Infinite = () => {
     const data = useRandomPlaceQuery("ScenicSpot", 38);
     const { wrap_card } = styles;
     const [page, setPage] = useState(1);
-    console.log(data);
-    console.log(page);
     let totalPage = (Math.ceil(data.length / 12));
     const renderData = data.slice(0 * 12, page * 12);
     const CardContent = ThemeCardContentByVisitType["ScenicSpot"];
